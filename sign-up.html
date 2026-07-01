@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up | Cowrywise</title>
+    <link rel="stylesheet" href="sign-up.css">
+    <link rel="icon" href="imgi_2_a5971d1b1fbb04e757204fbf07553916.png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="login">
+        <div class="logo-image">
+            <img src="download (2).svg" alt="">
+        </div>
+        <div class="container">
+            <div class="journey">
+                <h3>Start your investment journey</h3>
+                <span>Got an account?<a href="Login.html">Sign In</a></span>
+                <div class="google">
+                    <a href=""><img src="download (4).svg" alt="">Sign up with Google</a>
+                </div>
+                <div class="divider">
+                    <hr>
+                    <span>or</span>
+                    <hr>
+                </div>
+                <div class="emailContainer">
+                    <input type="email" placeholder="Email Address" required id="getUserEmail" class="emailInput">
+                    <label for="getUserEmail" class="emailLabel">Email Address</label>
+                    <div id="showEmail"><i class="fa-solid fa-circle-exclamation"></i></div>
+                </div>
+                <div class="plate">
+                    <div class="plate-1">
+                        <div class="emailContainer">
+                            <input type="text" placeholder="Legal FIrst Name" required id="getUserFirstName"
+                                class="emailInput">
+                            <label for="getUserFirstName" class="emailLabel">Legal First Name</label>
+                        </div>
+                        <div id="toast"></div>
+                        <div class="emailContainer">
+                            <input type="text" placeholder="Legal Last Name" required id="getUserLastName"
+                                class="emailInput">
+                            <label for="getUserLastName" class="emailLabel">Legal Last Name</label>
+                        </div>
+                    </div>
+                    <div class="plate-1">
+                        <div class="emailContainer">
+                            <input type="text" placeholder="@username" required id="getUserUsername" class="emailInput">
+                            <label for="getUserUsername" class="emailLabel">@username</label>
+                        </div>
+                        <div class="emailContainer">
+                            <input type="number" placeholder="Phone Number" required id="getUserPhone"
+                                class="emailInput">
+                            <label for="getUserPhone" class="emailLabel">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="plate-1">
+                        <div class="emailContainer">
+                            <input type="password" placeholder="Password" required id="getUserPassword"
+                                class="emailInput">
+                            <label for="getUserPassword" class="emailLabel">Password</label>
+                        </div>
+                        <div class="emailContainer">
+                            <input type="password" placeholder="Confirm Password" required id="getUserConfirmPassword"
+                                class="emailInput">
+                            <label for="getUserConfirmPassword" class="emailLabel">Confirm Password</label>
+                        </div>
+                    </div>
+                </div>
+                <button id="continueBtn" class="continue">Continue</button>
+                <div class="cowrywise">
+                    <span><img src="imgi_1_sec-logo.uViKvy1J.png" alt="" width="15px">Cowrywise is licensed by the
+                        SEC</span>
+                    <a href="">Need help?</a>
+                </div>
+            </div>
+            <div class="start">
+                <h5>Don’t wait to start</h5>
+                <p>See how much you could have earned in the past few years</p>
+                <a href=""><img src="download (7).svg" alt="">See what you missed <img src="download (9).svg"
+                        alt=""></a>
+            </div>
+        </div>
+        <div class="cover-image">
+            <img src="imgi_13_auth-bg.svg" alt="">
+        </div>
+        <img src="imgi_2_a5971d1b1fbb04e757204fbf07553916.png" alt="" width="40px" class="itheme">
+    </div>
+
+</body>
+<script src="script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBq-i-3bUhkrTpzyaDAOGOP8lmAD3rHuNM",
+        authDomain: "cowrywise-leveltwo-project.firebaseapp.com",
+        projectId: "cowrywise-leveltwo-project",
+        storageBucket: "cowrywise-leveltwo-project.firebasestorage.app",
+        messagingSenderId: "369383270880",
+        appId: "1:369383270880:web:c7cec0f50482d9ba96a385",
+        measurementId: "G-NMDP7SJSQ9"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+</html>

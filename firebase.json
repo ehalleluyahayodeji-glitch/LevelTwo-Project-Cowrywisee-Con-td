@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "(cowrywise leveltwo project)",
+        "supportEmail": "(cowrywise leveltwo project.firebase.app)"
+      }
+    }
+  }
+}

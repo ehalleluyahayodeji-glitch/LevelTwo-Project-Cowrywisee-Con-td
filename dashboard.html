@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cowrywise Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgi_2_a5971d1b1fbb04e757204fbf07553916.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="dashboard-body">
+    <div class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-brand">
+                <img src="IMAGE/download (15).svg" alt="Cowrywise" class="sidebar-logo">
+                <span>My Cowrywise</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#"><i class="fa-solid fa-piggy-bank"></i> Save</a>
+                <a href="#"><i class="fa-solid fa-chart-line"></i> Invest</a>
+                <a href="#"><i class="fa-solid fa-leaf"></i> Nest</a>
+                <a href="#"><i class="fa-solid fa-credit-card"></i> Payment</a>
+                <a href="#"><i class="fa-solid fa-box-archive"></i> Stash</a>
+                <a href="#"><i class="fa-solid fa-graduation-cap"></i> Learn</a>
+                <a href="#"><i class="fa-solid fa-handshake-angle"></i> Referral</a>
+            </nav>
+            <div class="sidebar-section">
+                <h5>Also from Cowrywise</h5>
+                <a href="#"><i class="fa-solid fa-business-time"></i> Sprout for Business</a>
+                <a href="#"><i class="fa-solid fa-child"></i> Finance for Kids</a>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div>
+                    <p class="dashboard-label">ACCOUNT OVERVIEW</p>
+                    <h1 id="dashboardGreeting">Howdy, Investor</h1>
+                </div>
+                <div class="topbar-actions">
+                    <button class="secondary-btn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                    <button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
+                </div>
+            </header>
+
+            <section class="dashboard-overview">
+                <div class="balance-card">
+                    <div class="card-head">
+                        <div>
+                            <span class="card-title">Naira Balance</span>
+                            <button class="visibility-btn" onclick="toggleBalance()"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <h2 id="balanceAmount">₦0.00</h2>
+                    </div>
+                    <div class="card-subtext">
+                        <span id="balanceStatus">See your total balance across savings and investments.</span>
+                        <button class="primary-btn" onclick="addCash(10000)">₦20K</button>
+                    </div>
+                    <div class="quick-actions">
+                        <button onclick="addCash(20000)">₦20K</button>
+                        <button onclick="addCash(50000)">₦50K</button>
+                        <button onclick="addCash(100000)">₦100K</button>
+                        <button onclick="addCash(250000)">₦250K</button>
+                        <button onclick="addCash(500000)">₦500K</button>
+                        <button class="add-more" onclick="addCashInput()">+</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-banner">
+                    <div>
+                        <p class="banner-label">Add cash</p>
+                        <h2>It’s World Cup Season Again!</h2>
+                        <p>Save or invest anytime your favourite player or team scores a goal in this tournament.</p>
+                        <button class="secondary-btn" onclick="showActionToast('Ready to save? Scroll down to pick a goal.')">Get started here</button>
+                    </div>
+                    <div class="banner-illustration">
+                        <img src="IMAGE/imgi_47_bg-lines.svg" alt="World Cup illustration">
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Save by myself</h2>
+                        <p>Pick a goal and start saving.</p>
+                    </div>
+                </div>
+                <div class="goal-grid">
+                    <button class="goal-card add-goal" onclick="createGoal()">
+                        <span class="goal-add">+</span>
+                        Add goal
+                    </button>
+                    <button class="goal-card" onclick="showActionToast('General goal selected')">
+                        <strong>General</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                    <button class="goal-card" onclick="showActionToast('Emergency goal selected')">
+                        <strong>Emergency</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                    <button class="goal-card" onclick="showActionToast('Home goal selected')">
+                        <strong>Home</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                    <button class="goal-card" onclick="showActionToast('Study goal selected')">
+                        <strong>Study</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Save with others</h2>
+                        <p>Group goals and shared savings.</p>
+                    </div>
+                </div>
+                <div class="goal-grid">
+                    <button class="goal-card add-goal" onclick="showActionToast('Start a group savings plan!')">
+                        <span class="goal-add">+</span>
+                        Add a plan
+                    </button>
+                    <button class="goal-card pink" onclick="showActionToast('Money Duo selected')">
+                        <strong>Money Duo</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                    <button class="goal-card green" onclick="showActionToast('Football plan selected')">
+                        <strong>Football</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                    <button class="goal-card violet" onclick="showActionToast('Basketball plan selected')">
+                        <strong>Basketball</strong>
+                        <span class="goal-status">EMPTY</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="dashboard-section dashboard-investment-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>More to invest in</h2>
+                        <p>Explore investing options that build your portfolio.</p>
+                    </div>
+                </div>
+                <div class="investment-grid">
+                    <div class="investment-card light-green" onclick="showActionToast('NG Stocks page coming soon')">
+                        <h3>NG Stocks</h3>
+                    </div>
+                    <div class="investment-card beige" onclick="showActionToast('Naira Mutual Funds selected')">
+                        <h3>Naira Mutual Funds</h3>
+                    </div>
+                    <div class="investment-card light-blue" onclick="showActionToast('Dollar Mutual Funds selected')">
+                        <h3>Dollar Mutual Funds</h3>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

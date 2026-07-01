@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cowrywise | Login</title>
+    <link rel="stylesheet" href="sign-up.css">
+    <link rel="icon" href="imgi_2_a5971d1b1fbb04e757204fbf07553916.png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <div  class="head">
+        <div class="logo-cowrywise">
+            <img src="download (2).svg" alt="">
+        </div>
+        <div class="container-head">
+            <div class="cover">
+                <h1>Jump right in</h1>
+                <p>Sign in to continue</p>
+                <span>New user? <a href="sign-up.html">Create account</a></span>
+            </div>
+            <div class="page-1">
+                <a href=""><img src="download (4).svg" alt="">Sign in with Google</a>
+                <a href=""><img src="IMAGE/download (24).svg" alt="">Sign in with Apple</a><br><br>
+                <div class="divider">
+                    <hr><span>or</span>
+                    <hr>
+                </div>
+                <div id="toastMsg"></div>
+                <input type="email" placeholder="Email Address" required id="getEmail"><br><br>
+                <input type="password" placeholder="Password" required id="getPassword"><br>
+                <img src="download (10).svg" alt="" class="eyes">
+                <div class="password">
+                    <p>Forgot Pasword?</p>
+                    <button onclick="loginUser()">Sign In</button>
+                </div>
+            </div>
+        </div>
+        <div class="content-side">
+            <span>Trouble signing in? <a href="">Chat with us</a></span>
+            <p>Privacy | Terms</p>
+        </div>
+    </div>
+    <div id="pinModal" class="overlay">
+            <div class="overlay">
+        <div class="pin-modal">
+            <div class="lock-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h2>Create PIN</h2>
+            <p>Your PIN adds an extra layer of security to your account</p>
+            <h3>Create your PIN</h3>
+            <div class="pin-boxes">
+                <input type="password" maxlength="1" id="pinOne">
+                <input type="password" maxlength="1" id="pinTwo">
+                <input type="password" maxlength="1" id="pinThree">
+                <input type="password" maxlength="1" id="pinFour">
+            </div>
+            <h3>Confirm your PIN</h3>
+            <div class="pin-boxes">
+                <input autofocus type="password" maxlength="1" id="newPinOne">
+                <input autofocus type="password" maxlength="1" id="newPinTwo">
+                <input autofocus type="password" maxlength="1" id="newPinThree">
+                <input autofocus type="password" maxlength="1" id="newPinFour">
+            </div>
+            <button onclick="createPin()">Create PIN</button>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</html>
+
+
+    
