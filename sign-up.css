@@ -59,15 +59,15 @@ body{
     color: rgb(0, 110, 245);
 }
 
-.google {
-    width: 100%;
+#google {
+    width: 50%;
     padding: 20px;
     margin-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.google a {
-    color: rgb(10, 47, 102);
+#google button {
+    color: rgb(10, 47, 102) ;
     padding: 10px;
     border-radius: 10px;
     font-weight: 500;
@@ -75,7 +75,7 @@ body{
     background-color: white;
 }
 
-.google img {
+#google button img {
     width: 18px;
     height: 18px;
 }
@@ -258,8 +258,10 @@ body{
     color: rgb(108, 130, 163);
     font-size: 15px;
 }
-
-.google {
+#google{
+    width: 90%;
+}
+#google {
     margin-top: 20px;
 }
 

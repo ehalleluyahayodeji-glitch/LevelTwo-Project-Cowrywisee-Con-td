@@ -1,169 +1,1358 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cowrywise Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="imgi_2_a5971d1b1fbb04e757204fbf07553916.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="dashboard.css">
 </head>
+<body>
 
-<body class="dashboard-body">
-    <div class="dashboard-shell">
-        <aside class="dashboard-sidebar">
-            <div class="sidebar-brand">
-                <img src="IMAGE/download (15).svg" alt="Cowrywise" class="sidebar-logo">
-                <span>My Cowrywise</span>
+<div id="loader" style="display: none;">
+    <img src="IMAGE/gif-logo-loading.gif" alt="Loading">
+</div>
+
+<div id="app">
+    <nav class="top-navbar">
+        <div class="d-flex align-items-center">
+            <div class="logo-div ms-5">
+                <img src="IMAGE/dashboard-logo.svg" alt="">
             </div>
-            <nav class="sidebar-nav">
-                <a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="#"><i class="fa-solid fa-piggy-bank"></i> Save</a>
-                <a href="#"><i class="fa-solid fa-chart-line"></i> Invest</a>
-                <a href="#"><i class="fa-solid fa-leaf"></i> Nest</a>
-                <a href="#"><i class="fa-solid fa-credit-card"></i> Payment</a>
-                <a href="#"><i class="fa-solid fa-box-archive"></i> Stash</a>
-                <a href="#"><i class="fa-solid fa-graduation-cap"></i> Learn</a>
-                <a href="#"><i class="fa-solid fa-handshake-angle"></i> Referral</a>
-            </nav>
-            <div class="sidebar-section">
-                <h5>Also from Cowrywise</h5>
-                <a href="#"><i class="fa-solid fa-business-time"></i> Sprout for Business</a>
-                <a href="#"><i class="fa-solid fa-child"></i> Finance for Kids</a>
+        </div>
+        <div class="navbar-center" id="navbar-title">ACCOUNT OVERVIEW</div>
+
+        <div class="d-flex align-items-center gap-3">
+            <div class="pill-badge-maroon" style="cursor: pointer;">
+                <img src="IMAGE/seed_icon.png" style="width: 20px">
+                <span style="padding-left: 5px">Seed</span>
             </div>
-        </aside>
-
-        <main class="dashboard-main">
-            <header class="dashboard-topbar">
-                <div>
-                    <p class="dashboard-label">ACCOUNT OVERVIEW</p>
-                    <h1 id="dashboardGreeting">Howdy, Investor</h1>
+            <i class="bi bi-bell navbar-bell"></i>
+            <div class="d-flex align-items-center gap-1" style="cursor: pointer">
+                <div class="user-avatar-circle">
+                    <img src="IMAGE/dashboard-logo (1).svg" style="width: 40px">
                 </div>
-                <div class="topbar-actions">
-                    <button class="secondary-btn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-                    <button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
-                    <button class="icon-btn"><i class="fa-solid fa-user-circle"></i></button>
-                </div>
-            </header>
+                <ul class="navbar-nav me-1 me-lg-4 me-md-3 my-2 my-lg-0 index-ul d-lg-flex">
 
-            <section class="dashboard-overview">
-                <div class="balance-card">
-                    <div class="card-head">
-                        <div>
-                            <span class="card-title">Naira Balance</span>
-                            <button class="visibility-btn" onclick="toggleBalance()"><i class="fa-solid fa-eye"></i></button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                        <div class="dropdown-menu" style="min-width: 120px;">
+                            <a class="dropdown-item-custom"  onclick="showView('profile')">
+                                <div class="icon-circle d-flex align-items-center justify-content-center rounded-circle icon-bg">
+                                    <img src="IMAGE/profile-head.svg" alt="" style="width: 25px">
+                                </div>
+                                <div>
+                                    <span class="fw-semibold d-block .a-profile">Profile</span>
+                                </div>
+                            </a>
+                            <a class="dropdown-item-custom" onclick="logout()" >
+                                <div class="icon-circle d-flex align-items-center justify-content-center rounded-circle icon-bg">
+                                    <img src="IMAGE/profile-logout.svg" alt="" style="width: 25px">
+                                </div>
+                                <div>
+                                    <span class="fw-semibold d-block .a-profile">Logout</span>
+                                </div>
+                            </a>
+
+
                         </div>
-                        <h2 id="balanceAmount">₦0.00</h2>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <aside class="sidebar-fixed">
+        <div class="sidebar-greeting">
+            <span class="fw-normal" id="greeting-prefix" style="color: rgb(174, 185, 204); font-size: 20.48px; font-weight: 600">Howdy</span>
+            <span class="fw-bold nm" id="welcomeName">ShimboJr</span>
+        </div>
+        <ul class="nav-items-list">
+            <li class="nav-item-custom active" id="side-home" onclick="showView('home')">
+                <!--            <i class="bi bi-house-door-fill"></i> -->
+                <img src="IMAGE/sidebar-home.svg">
+                Home
+            </li>
+            <li class="nav-item-custom" id="side-save" onclick="showView('save')">
+                <img src="IMAGE/sdiebar-save.svg">
+                Save
+            </li>
+            <li class="nav-item-custom" id="side-invest" onclick="showView('invest')">
+                <img src="IMAGE/sidebar-invest.svg">
+                Invest
+            </li>
+            <li class="nav-item-custom" id="side-nest">
+                <img src="IMAGE/sidebar-nest.svg">
+                Nest
+            </li>
+            <li class="nav-item-custom" id="side-payment">
+                <img src="IMAGE/sidebar-payment.svg">
+                Payment
+            </li>
+            <li class="nav-item-custom" id="side-stash">
+                <img src="IMAGE/sidebar-stash.svg">
+                Stash
+            </li>
+            <li class="nav-item-custom" id="side-learn">
+                <img src="IMAGE/sidebar-learn.svg">
+                Learn
+            </li>
+            <li class="nav-item-custom" id="side-referral">
+                <img src="IMAGE/sidebar-referral.svg">
+                </i> Referral
+            </li>
+        </ul>
+
+        <div style="border-top: 1px solid #E5E7EB; margin: 16px 0;"></div>
+        <div style="font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: #9CA3AF; padding-left: 12px; margin-bottom: 10px;">ALSO FROM COWRYWISE</div>
+        <div class="sidebar-sub-item">
+            <div class="d-flex align-items-center gap-2">
+                <img src="IMAGE/sidebar-d1.svg">
+                <span>Sprout for Business</span>
+            </div>
+            <i class="bi bi-arrow-up-right text-muted"></i>
+        </div>
+        <div class="sidebar-sub-item">
+            <div class="d-flex align-items-center gap-2">
+                <img src="IMAGE/sidebar-d2.svg">
+                <span>Finance for Kids</span>
+            </div>
+            <i class="bi bi-arrow-up-right text-muted"></i>
+        </div>
+    </aside>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-item active" id="bottom-home" onclick="showView('home')">
+            <i class="bi bi-house-door-fill"></i>
+            <span>Home</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-save" onclick="showView('save')">
+            <i class="bi bi-disc"></i>
+            <span>Save</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-invest" onclick="showView('invest')">
+            <i class="bi bi-gift"></i>
+            <span>Invest</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-nest">
+            <i class="bi bi-cloud"></i>
+            <span>Nest</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-payment">
+            <i class="bi bi-credit-card"></i>
+            <span>Payment</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-stash">
+            <i class="bi bi-archive"></i>
+            <span>Stash</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-learn">
+            <i class="bi bi-reception-4"></i>
+            <span>Learn</span>
+        </div>
+        <div class="bottom-nav-item" id="bottom-referral">
+            <i class="bi bi-megaphone"></i>
+            <span>Referral</span>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="tab-bar-container" id="tab-bar-wrapper">
+            <div class="tab-pill-group">
+                <div id="tab-home" class="tab-pill active" onclick="showView('home')">Home</div>
+                <div id="tab-portfolio" class="tab-pill inactive" onclick="showView('portfolio')">Portfolio</div>
+            </div>
+        </div>
+
+        <div class="tab-bar-container" id="tab-bar-wrapper2" style="display: none">
+            <div class="tab-pill-group">
+                <div id="tab-profile" class="tab-pill active" onclick="showView('profile')">Profile</div>
+                <div id="tab-security" class="tab-pill inactive" onclick="showView('security')">Security</div>
+            </div>
+        </div>
+
+        <div id="view-home">
+            <div class="dashboard-grid">
+                <div class="balance-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2" style="font-size: 13px; opacity: 0.85;">
+                            <span>Naira Balance</span>
+                            <i class="bi bi-chevron-down"></i>
+                            <i class="fa fa-eye" id="toggleBalance"></i>
+                        </div>
+                        <div class="badge-yellow">
+                            <!--                        ⚡ -->
+                            <img src="IMAGE/lightening.svg" style="width: 10px">
+                            1
+                        </div>
                     </div>
-                    <div class="card-subtext">
-                        <span id="balanceStatus">See your total balance across savings and investments.</span>
-                        <button class="primary-btn" onclick="addCash(10000)">₦20K</button>
+
+                    <div class="mt-2 mb-auto">
+                        <div class="d-flex align-items-baseline flex-wrap">
+                            <sup style="font-size:23.6px; font-weight: 500; padding-right: 8px">₦</sup>
+                            <span class="balance-amount" id="balAmount">1,000</span>
+                            <span class="balance-decimals" id="balDecimals">.00</span>
+                        </div>
                     </div>
-                    <div class="quick-actions">
-                        <button onclick="addCash(20000)">₦20K</button>
-                        <button onclick="addCash(50000)">₦50K</button>
-                        <button onclick="addCash(100000)">₦100K</button>
-                        <button onclick="addCash(250000)">₦250K</button>
-                        <button onclick="addCash(500000)">₦500K</button>
-                        <button class="add-more" onclick="addCashInput()">+</button>
+
+                    <div class="bottom-pill-btn">
+                        <span>✦ ₦ NO return in Jun</span>
+                        <i class="bi bi-chevron-up"></i>
                     </div>
                 </div>
 
-                <div class="dashboard-banner">
+                <div class="d-flex flex-column gap-1">
+                    <div class="bg-white p-3 rounded-4 border-0">
+                        <h3 class="section-heading">Add cash</h3>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="pill-btn-outline standard" onclick="addCash('20000')">₦ 20K</button>
+                            <button class="pill-btn-outline standard" onclick="addCash('50000')">₦ 50K</button>
+                            <button class="pill-btn-outline standard" onclick="addCash('100000')">₦ 100K</button>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap align-items-center mt-2">
+                            <button class="pill-btn-outline standard">$ 100</button>
+                            <button class="pill-btn-outline standard">$ 200</button>
+                            <div class="circle-plus-btn" data-bs-toggle="modal" data-bs-target="#myModalAddCash">+</div>
+                        </div>
+                    </div>
+
+                    <div id="carouselExample" class="carousel slide mt-3">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="IMAGE/AppCard_WorldCup.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="IMAGE/AppCard_Sprout.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="IMAGE/AppCard_Stocks.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="IMAGE/AppCard_Youtube.png" class="d-block w-100">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-portfolio" style="display: none;">
+            <div class="d-flex justify-content-end mb-4">
+                <a href="#" style="font-size: 16px; color: #1574F6; text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 500">
+                    <i class="fa-regular fa-envelope" style="font-size: 16px;"></i> Request investment letter
+                </a>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="card-header-row">
+                        <div class="d-flex align-items-center">
+                            <img src="IMAGE/portfolio-growth.svg" style="padding: 0px 6px">
+                            <span class="portfolio-card-title"> Growth</span>
+                        </div>
+                        <i class="bi bi-chevron-right" style="color: #9CA3AF; font-size: 14px;"></i>
+                    </div>
+                    <h6 style="font-size: 20.28px; font-weight: 500; color: #042E68; line-height: 1.5; margin-bottom: 16px;">
+                        Your portfolio balance has remained the same year to date.
+                    </h6>
                     <div>
-                        <p class="banner-label">Add cash</p>
-                        <h2>It’s World Cup Season Again!</h2>
-                        <p>Save or invest anytime your favourite player or team scores a goal in this tournament.</p>
-                        <button class="secondary-btn" onclick="showActionToast('Ready to save? Scroll down to pick a goal.')">Get started here</button>
+                        <span style="font-size: 11px; color: #9CA3AF; display: block; margin-bottom: 2px;">Today</span>
+                        <span style="font-size: 24.96px; font-weight: 400; color: rgb(4, 46, 104);">₦ 0K</span>
                     </div>
-                    <div class="banner-illustration">
-                        <img src="IMAGE/imgi_47_bg-lines.svg" alt="World Cup illustration">
+
+                    <div style="margin-top: 12px; width: 100%;">
+                        <svg width="100%" height="100" viewBox="0 0 400 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 85 L 340 85 L 400 15 L 400 85 Z" fill="rgba(59,130,246,0.08)" />
+                            <line x1="0" y1="85" x2="400" y2="85" stroke="#E5E7EB" stroke-width="1"/>
+                            <path d="M 0 85 L 340 85 L 400 15" stroke="#3B82F6" stroke-width="2" fill="none" stroke-linecap="round" />
+                            <circle cx="400" cy="15" r="4" fill="#3B82F6" />
+                            <text x="0" y="98" font-size="10" fill="#9CA3AF" text-anchor="start">JAN</text>
+                            <circle cx="40" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="80" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="120" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="160" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="200" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="240" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="280" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="320" cy="95" r="1.5" fill="#9CA3AF" /><circle cx="360" cy="95" r="1.5" fill="#9CA3AF"/>
+                            <text x="400" y="98" font-size="10" fill="#9CA3AF" text-anchor="end">DEC</text>
+                        </svg>
+                    </div>
+                    <div class="card-footer-text">
+                        Steady progress. Sometimes holding your ground is growth too.
                     </div>
                 </div>
-            </section>
 
-            <section class="dashboard-section">
-                <div class="section-heading">
+                <div class="portfolio-card">
+                    <div class="card-header-row">
+                        <div class="d-flex align-items-center">
+<!--                            <span class="green-indicator"></span>-->
+                            <img src="IMAGE/portfolio-earnings.svg" style="padding: 0px 6px">
+                            <span class="portfolio-card-title">Earnings</span>
+                        </div>
+                        <i class="bi bi-chevron-right" style="color: #9CA3AF; font-size: 14px;"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 180px; padding: 40px 0;">
+                        <svg width="60" height="55" viewBox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="25" width="12" height="30" rx="2" fill="#D1D5DB" />
+                            <rect x="24" y="5" width="12" height="50" rx="2" fill="#D1D5DB" />
+                            <rect x="44" y="15" width="12" height="40" rx="2" fill="#D1D5DB" />
+                        </svg>
+                        <span style="font-size: 13px; color: #9CA3AF; text-align: center; margin-top: 12px;">No data yet</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-header-row">
+                        <div class="d-flex align-items-center" style="padding: 20px 0px">
+<!--                            <span class="green-indicator"></span>-->
+                            <img src="IMAGE/portfolio-breakdown.svg" style="padding: 0px 6px">
+                            <span class="portfolio-card-title">Breakdown</span>
+                        </div>
+                        <i class="bi bi-chevron-right" style="color: #9CA3AF; font-size: 15px;"></i>
+                    </div>
+                    <div class="portfolio-progress-outer">
+                        <div class="portfolio-progress-inner"></div>
+                    </div>
+                    <div class="d-flex align-items-center" style="margin-top: 4px;margin-bottom: 30px">
+                        <span class="green-indicator" style="margin-right: 6px;"></span>
+                        <span style="font-size: 14px; font-weight: 400; color: rgb(4, 46, 104);">Investments: 100.00%</span>
+                    </div>
+                    <div class="card-footer-text">
+                        Consider saving regularly to build a strong financial foundation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-save" style="display: none;">
+            <div class="save-stats-row" style="display: flex; align-items: flex-start; gap: 60px; padding: 8px 0 32px 0;">
+                <div>
+                    <div style="font-size: 16px; color: rgb(98, 124, 159); display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                        Savings Balance <i class="bi bi-eye"></i>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <sup style="font-size: 19.26px; font-weight: 400; color: rgb(4, 46, 104);">₦</sup>
+                        <span style="font-size: 44.8px; font-weight: 600; color: rgb(4, 46, 104);">&nbsp;0</span>
+                        <span style="font-size: 17.92px; font-weight: 700; color: #6882A4;">.00</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="font-size: 18px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 10px;">Add cash</div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">₦ 20K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">₦ 50K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">₦ 100K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">₦ 250K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">₦ 500K</button>
+                        <div style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #F5F6FA; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgb(0, 103, 245); cursor: pointer;">+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <h6 class="save-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Save by myself</h6>
+                <div style="position: relative;">
+                    <div class="save-scroll-row">
+                        <div style="min-width: 140px; height: 140px; border: 1px solid #F0F3F7; border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">
+                            <div style="width: 55px; height: 55px; border-radius: 50%; border: none; background: #EFF6FF; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-plus" style="font-size: 40px; color: rgb(0, 103, 245);"></i>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #E1F6FF;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #E1F6FF;">
+                                <img src="IMAGE/savings-general.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">General</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #F5EDFF;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #F5EDFF;">
+                                <img src="IMAGE/savings-emergency.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Emergency</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #ECFBEC;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #ECFBEC;">
+                                <img src="IMAGE/savings-home.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Home</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #FFF6EE;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #FFF6EE;">
+                                <img src="IMAGE/savings-study.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Study</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #FFE6EB;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #FFE6EB;">
+                                <img src="IMAGE/savings-car.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Car</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-arrow-btn" onclick="this.previousElementSibling.scrollBy({left: 200, behavior: 'smooth'})">
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 36px;">
+                <h6 class="save-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Save with others</h6>
+                <div style="position: relative;">
+                    <div class="save-scroll-row">
+                        <div style="min-width: 140px; height: 140px; border: 1px solid #F0F3F7; border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;">
+                            <div style="width: 55px; height: 55px; border-radius: 50%; border: none; background: #EFF6FF; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-plus" style="font-size: 40px; color: rgb(0, 103, 245);"></i>
+                            </div>
+                        </div>
+                        <div class="save-scroll-card" style="background: #FFE6EB;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #FFE6EB;">
+                                <img src="IMAGE/savings-money-duo.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Money Duo</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+
+                        <div class="save-scroll-card" style="background: #ECFBEC;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #ECFBEC;">
+                                <img src="IMAGE/savings-football.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Football</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+
+                        <div class="save-scroll-card" style="background: #FBF9FF;">
+                            <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #FBF9FF;">
+                                <img src="IMAGE/savings-basketball.svg" style="width: 70px">
+                            </div>
+                            <div>
+                                <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104); margin: 10px">Basketball</div>
+                                <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="save-arrow-btn" onclick="this.previousElementSibling.scrollBy({left: 200, behavior: 'smooth'})">
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-invest" style="display: none;">
+            <div class="invest-stats-row" style="display: flex; align-items: flex-start; gap: 80px; padding: 8px 0 36px 0;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                        <span style="font-size: 12.8px; font-weight: 400; color: rgb(98, 124, 159);">Naira Balance</span>
+                        <i class="bi bi-chevron-down" style="color: #1D4ED8;"></i>
+                        <i class="fa fa-eye" style="color: #9CA3AF;" id="toggleBalance2"></i>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <sup style="font-size:23.6px; font-weight: 400; padding-right: 8px">₦</sup>
+                        <span class="balance-amount" id="balAmount2">1,000</span>
+                        <span class="balance-decimals" id="balDecimals2">.00</span>
+                    </div>
+                </div>
+
+                <div class="invest-addcash">
+                    <h5 style="font-size: 18px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 10px;">Add cash</h5>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;"  onclick="addCash('20000')">₦ 20K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;" onclick="addCash('50000')">₦ 50K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;" onclick="addCash('100000')">₦ 100K</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">$ 100</button>
+                        <button class="save-pill-btn" style="border: none; border-radius: 50px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgb(4, 46, 104); background: #F5F6FA; cursor: pointer;">$ 200</button>
+                        <div style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #F5F6FA; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgb(4, 46, 104); cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModalAddCash">+</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <h6 class="invest-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Investments</h6>
+
+                <div style="background: #E1F6FF; border-radius: 14px; padding: 20px 20px; display: inline-flex; align-items: center; gap: 16px; min-width: 330px; height: 140px; cursor: pointer; transition: filter 0.15s ease;" onmouseover="this.style.filter='brightness(0.96)'" onmouseout="this.style.filter='none'">
+                    <img src="IMAGE/invest-naira.svg" style="width: 70px">
                     <div>
-                        <h2>Save by myself</h2>
-                        <p>Pick a goal and start saving.</p>
+                        <div style="font-size: 18.4px; font-weight: 400; color: rgb(4, 46, 104);">Naira Funds</div>
+                        <div style="font-size: 18.4px; font-weight: 600; color: rgb(4, 46, 104); margin-top: 3px;" id="balInvest">₦ 1,000.00</div>
                     </div>
                 </div>
-                <div class="goal-grid">
-                    <button class="goal-card add-goal" onclick="createGoal()">
-                        <span class="goal-add">+</span>
-                        Add goal
-                    </button>
-                    <button class="goal-card" onclick="showActionToast('General goal selected')">
-                        <strong>General</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                    <button class="goal-card" onclick="showActionToast('Emergency goal selected')">
-                        <strong>Emergency</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                    <button class="goal-card" onclick="showActionToast('Home goal selected')">
-                        <strong>Home</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                    <button class="goal-card" onclick="showActionToast('Study goal selected')">
-                        <strong>Study</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                </div>
-            </section>
+            </div>
 
-            <section class="dashboard-section">
-                <div class="section-heading">
-                    <div>
-                        <h2>Save with others</h2>
-                        <p>Group goals and shared savings.</p>
-                    </div>
-                </div>
-                <div class="goal-grid">
-                    <button class="goal-card add-goal" onclick="showActionToast('Start a group savings plan!')">
-                        <span class="goal-add">+</span>
-                        Add a plan
-                    </button>
-                    <button class="goal-card pink" onclick="showActionToast('Money Duo selected')">
-                        <strong>Money Duo</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                    <button class="goal-card green" onclick="showActionToast('Football plan selected')">
-                        <strong>Football</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                    <button class="goal-card violet" onclick="showActionToast('Basketball plan selected')">
-                        <strong>Basketball</strong>
-                        <span class="goal-status">EMPTY</span>
-                    </button>
-                </div>
-            </section>
+            <div style="margin-top: 36px;">
+                <h6 class="invest-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">More to invest in</h6>
 
-            <section class="dashboard-section dashboard-investment-section">
-                <div class="section-heading">
-                    <div>
-                        <h2>More to invest in</h2>
-                        <p>Explore investing options that build your portfolio.</p>
+                <div class="invest-cards-row" style="display: flex; gap: 14px; flex-wrap: nowrap; margin-bottom: 20px;">
+                    <div class="invest-more-card" style="background: #BDFF97;">
+                        <h2 class="invest-card-title" style="color: rgb(0, 88, 46);">NG Stocks</h2>
+                        <div class="invest-card-illustration">
+                            <img src="IMAGE/invest-ng_stock.webp" style="width: 250px">
+                        </div>
                     </div>
-                </div>
-                <div class="investment-grid">
-                    <div class="investment-card light-green" onclick="showActionToast('NG Stocks page coming soon')">
-                        <h3>NG Stocks</h3>
-                    </div>
-                    <div class="investment-card beige" onclick="showActionToast('Naira Mutual Funds selected')">
-                        <h3>Naira Mutual Funds</h3>
-                    </div>
-                    <div class="investment-card light-blue" onclick="showActionToast('Dollar Mutual Funds selected')">
-                        <h3>Dollar Mutual Funds</h3>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
 
-    <script src="script.js"></script>
+                    <div class="invest-more-card" style="background: #FCE0C0;">
+                        <h2 class="invest-card-title" style="color: rgb(114, 84, 101);">Naira Mutual Funds</h2>
+                        <div class="invest-card-illustration">
+                            <img src="IMAGE/invest-naira_mf.webp" style="width: 250px">
+                        </div>
+                    </div>
+
+                    <div class="invest-more-card" style="background: #DAE2F5;">
+                        <h2 class="invest-card-title" style="color: rgb(30, 43, 117);">Dollar Mutual Funds</h2>
+                        <div class="invest-card-illustration">
+                            <img src="IMAGE/invest-dollar_mf.webp" style="width: 250px">
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="invest-footer-link">
+                    <i class="bi bi-info-circle" style="font-size: 10px; color: #1775F6;"></i>
+                    <span>Learn more about investments</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="view-profile" style="display: none;">
+
+            <h5 style="font-size: 24.96px; font-weight: 600; color: rgb(174, 185, 204)">Personalize Details</h5>
+
+            <div class="profile-identity-card">
+                <div class="avatar-frame">
+                    <img src="IMAGE/dash-profile-icon2.png" style="width: 100px">
+                    <i class="bi bi-camera avatar-camera-icon"></i>
+                </div>
+                <div>
+                    <h5 class="profile-name" id="fullName">Adeola Siyanbola</h5>
+                    <div class="pill-badge-maroon" style="cursor: pointer; background: #FFEBF0">
+                        <img src="IMAGE/seed_icon.png" style="width: 20px">
+                        <span style="padding-left: 5px">Seed</span> <i class="bi bi-chevron-right ms-1" style="font-size: 14px; color: rgb(4, 46, 104)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Username</div>
+                    <div class="data-label-subtext">Receive money from friends using your username</div>
+                </div>
+                <div>
+                    <div class="input-group2">
+                        <input type="text" id="unameProfile" required>
+                        <label for="unameProfile" id="unameLabel">Username</label>
+                    </div>
+                    <button class="btn-cowry-blue" onclick="changeUsername()">Save Changes</button>
+                </div>
+            </div>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Gender</div>
+                </div>
+                <div class="data-value-plain">......</div>
+            </div>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Date of Birth</div>
+                </div>
+                <div class="data-value-plain">......</div>
+            </div>
+
+            <h5 class="section-big-title yes-border mt-5 pb-4">Next of Kin</h5>
+            <div class="profile-data-row">
+                <div class="data-value-plain" style="font-weight: 600">No Next Of Kin</div>
+                <div class="text-md-start">
+                    <button class="btn-cowry-blue">Add Next Of Kin</button>
+                </div>
+            </div>
+
+            <h5 class="section-big-title yes-border mt-5 pb-4">Cashout Funds</h5>
+            <div class="profile-data-row">
+                <div class="data-value-plain" style="font-weight: 600">Withdraw Cash</div>
+                <div class="text-md-start">
+                    <button class="btn-cowry-blue" data-bs-toggle="modal" data-bs-target="#myModalCashout">Withdraw</button>
+                </div>
+            </div>
+
+            <!--    <h2 class="section-big-title mt-5">Visibility</h2>-->
+            <!--    <div class="profile-data-row">-->
+            <!--        <div>-->
+            <!--            <div class="data-label-primary">Account Visibility</div>-->
+            <!--            <div class="data-label-subtext" style="max-width: 320px;">Disable my account from being discovered by friends.</div>-->
+            <!--        </div>-->
+            <!--        <div>-->
+            <!--            <div class="form-switch-custom active" onclick="this.classList.toggle('active')"></div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+        </div>
+
+        <div id="view-security" style="display: none;">
+
+            <h5 style="font-size: 24.96px; font-weight: 600; color: rgb(174, 185, 204)" class="yes-border pb-4">Verified Information</h5>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Email Address</div>
+                </div>
+                <div class="data-value-plain" id="emailProfile"></div>
+            </div>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Phone Number</div>
+                </div>
+                <div class="data-value-plain d-flex align-items-center gap-2">
+                    <span id="phoneProfile"></span>
+                    <i class="bi bi-pencil-fill text-primary" style="font-size: 12px; cursor: pointer;" id="openModalPhone"  data-bs-toggle="modal" data-bs-target="#myModal"></i>
+                </div>
+            </div>
+
+            <h2 class="section-big-title yes-border mt-5 pb-4">Password & PIN</h2>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Update Password</div>
+                    <div class="data-label-subtext">Change your old password to a new one</div>
+                </div>
+                <div>
+                    <a class="data-value-link" data-bs-toggle="modal" data-bs-target="#myModalPass" style="cursor: pointer">Change Password</a>
+                </div>
+            </div>
+
+            <div class="profile-data-row">
+                <div>
+                    <div class="data-label-primary">Update PIN</div>
+                    <div class="data-label-subtext">Change or reset your Cowrywise PIN</div>
+                </div>
+                <div>
+                    <a class="data-value-link" data-bs-toggle="modal" data-bs-target="#myModalPinA" style="cursor: pointer">Change PIN</a>
+                </div>
+            </div>
+
+
+            <h2 class="section-big-title yes-border mt-5 pb-4">Termination</h2>
+
+            <div class="profile-data-row py-2">
+                <div class="data-value-danger" onclick="closeAccount()">Close my account</div>
+            </div>
+        </div>
+
+        <!-- Modal Change Phone Number-->
+        <div class="modal fade" id="myModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title section-big-title">Change Phone Number</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="input-group2">
+                            <input type="tel" id="phoneIn" class="w-100" required>
+                            <label for="phoneIn" id="phoneLabel">Phone Number</label>
+                            <i class="fa-solid fa-phone ca-phone"></i>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button onclick="changePhone()" class="btn btn-primary w-50 mt-2 ff">Change Phone Number</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Change Password-->
+        <div class="modal fade" id="myModalPass" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title section-big-title">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-2 input-group2">
+                            <input type="password" id="password" class="w-100" required>
+                            <label for="password">Old Password</label>
+                        </div>
+                        <div class="mb-2 input-group2">
+                            <input type="password" id="Cpassword" class="w-100" required>
+                            <label for="password">New Password</label>
+                            <i class="fa fa-eye si-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button onclick="changePass()" class="btn btn-primary w-50 mt-2 ff">Change Password</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Change PinA-->
+        <div class="modal fade" id="myModalPinA" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <div class="cw-modal-card">
+                            <button class="cw-modal-close" aria-label="Close modal" data-bs-dismiss="modal">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+
+                            <h1 class="cw-modal-title">Change PIN</h1>
+                            <p class="cw-modal-subtitle">Enter your old Cowrywise PIN</p>
+
+                            <div class="cw-pin-container">
+                                <input type="password" class="c-pin-box" id="pNo1" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pNo2" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pNo3" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pNo4" maxlength="1" pattern="\d*" inputmode="numeric">
+                            </div>
+
+                            <div class="cw-reset-text">
+                                Forgot PIN? <a href="#" class="cw-reset-link">Reset your PIN</a>
+                            </div>
+
+                            <button class="cw-btn-next" onclick="checkPIN()">Next</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Change PinB-->
+        <div class="modal fade" id="myModalPinB" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <div class="cw-modal-card">
+                            <button class="cw-modal-close" aria-label="Close modal" data-bs-dismiss="modal">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+
+                            <h1 class="cw-modal-title">Change PIN</h1>
+                            <p class="cw-modal-subtitle">Enter your new Cowrywise PIN</p>
+
+                            <div class="cw-row-label">Enter new PIN</div>
+                            <div class="cw-pin-container" id="new-pin-row">
+                                <input type="password" id="pinNo1" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="pinNo2" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="pinNo3" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="pinNo4" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                            </div>
+
+                            <div class="cw-row-label">Confirm new PIN</div>
+                            <div class="cw-pin-container" id="confirm-pin-row">
+                                <input type="password" id="CpinNo1" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="CpinNo2" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="CpinNo3" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                                <input type="password" id="CpinNo4" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
+                            </div>
+
+                            <button class="cw-btn-submit" onclick="changePIN()">Change PIN</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Add Cash-->
+        <div class="modal fade" id="myModalAddCash" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="cw-portfolio-modal">
+                            <button class="cw-close-btn" aria-label="Close modal" data-bs-dismiss="modal">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+
+                            <a class="cw-header-nav">
+                                <i class="bi bi-chevron-left" style="stroke-width: 1.5px;"></i>
+                                <span>Add Cash</span>
+                            </a>
+
+                            <div class="cw-amount-display-container">
+                                <span class="cw-naira-symbol">₦</span>
+                                <input
+                                        type="text"
+                                        class="cw-amount-input"
+                                        id="payment-amount"
+                                        inputmode="decimal"
+                                        placeholder=""
+                                        value="0"
+                                        autofocus
+                                >
+                            </div>
+
+                            <div class="cw-payment-method-row">
+                                <div class="cw-bank-icon-frame">
+                                    <i class="bi bi-bank"></i>
+                                </div>
+                                <div class="cw-method-details">
+                                    <div class="cw-method-title">Bank transfer</div>
+                                    <p class="cw-method-subtitle">Send money from your bank app</p>
+                                </div>
+                                <div class="cw-radio-indicator">
+                                    <div class="cw-radio-dot"></div>
+                                </div>
+                            </div>
+
+                            <div class="cw-action-footer">
+                                <button class="cw-btn-pay" id="pay-btn" onclick="addCashBtn()">Pay</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Withdraw Cash-->
+        <div class="modal fade" id="myModalCashout" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="cw-portfolio-modal">
+                            <button class="cw-close-btn" aria-label="Close modal" data-bs-dismiss="modal">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+
+                            <a class="cw-header-nav">
+                                <i class="bi bi-chevron-left" style="stroke-width: 1.5px;"></i>
+                                <span>Withdraw Cash</span>
+                            </a>
+
+                            <div class="cw-amount-display-container">
+                                <span class="cw-naira-symbol">₦</span>
+                                <input
+                                        type="text"
+                                        class="cw-amount-input"
+                                        id="withdrawal-amount"
+                                        inputmode="decimal"
+                                        placeholder=""
+                                        value="0"
+                                        autofocus
+                                >
+                            </div>
+
+                            <p class="cw-modal-subtitle">Transaction PIN</p>
+
+                            <div class="cw-pin-container">
+                                <input type="password" class="c-pin-box" id="pN1" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pN2" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pN3" maxlength="1" pattern="\d*" inputmode="numeric">
+                                <input type="password" class="c-pin-box" id="pN4" maxlength="1" pattern="\d*" inputmode="numeric">
+                            </div>
+
+                            <div class="cw-payment-method-row">
+                                <div class="cw-bank-icon-frame">
+                                    <i class="bi bi-bank"></i>
+                                </div>
+                                <div class="cw-method-details">
+                                    <div class="cw-method-title">Bank transfer</div>
+                                    <p class="cw-method-subtitle">Send money to your bank account</p>
+                                </div>
+                                <div class="cw-radio-indicator">
+                                    <div class="cw-radio-dot"></div>
+                                </div>
+                            </div>
+
+                            <div class="cw-action-footer">
+                                <button class="cw-btn-pay" id="withdraw-btn" onclick="withdrawBtn()">Withdraw</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fav">
+            <img src="./images/touch-icon.png" alt="" class="fav-icon">
+        </div>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function showView(viewName) {
+        // 1. Structural Canvas Node Initialization
+        const views = ['home', 'portfolio', 'save', 'invest', 'profile', 'security'];
+        views.forEach(v => {
+            const viewEl = document.getElementById('view-' + v);
+            if (viewEl) viewEl.style.display = 'none';
+        });
+
+        // 2. Display View Matrix Selector Execution
+        const targetView = document.getElementById('view-' + viewName);
+        if (targetView) targetView.style.display = 'block';
+
+        // 3. Tab Pill Group Shell Visibility Control Configuration
+        const tabBarWrapper = document.getElementById('tab-bar-wrapper');
+        if (viewName === 'home' || viewName === 'portfolio') {
+            tabBarWrapper.style.display = 'block';
+            const tabHome = document.getElementById("tab-home");
+            const tabPortfolio = document.getElementById("tab-portfolio");
+            if (viewName === 'home') {
+                tabHome.className = "tab-pill active";
+                tabPortfolio.className = "tab-pill inactive";
+            } else {
+                tabHome.className = "tab-pill inactive";
+                tabPortfolio.className = "tab-pill active";
+            }
+        } else {
+            tabBarWrapper.style.display = 'none';
+        }
+
+        const tabBarWrapper2 = document.getElementById('tab-bar-wrapper2');
+        if (viewName === 'profile' || viewName === 'security') {
+            tabBarWrapper2.style.display = 'block';
+            const tabProfile = document.getElementById("tab-profile");
+            const tabSecurity = document.getElementById("tab-security");
+            if (viewName === 'profile') {
+                tabProfile.className = "tab-pill active";
+                tabSecurity.className = "tab-pill inactive";
+            } else {
+                tabProfile.className = "tab-pill inactive";
+                tabSecurity.className = "tab-pill active";
+            }
+        } else {
+            tabBarWrapper2.style.display = 'none';
+        }
+
+
+        // 4. Global Structural Heading Content Modifiers Mapping Matrix
+        const navbarTitle = document.getElementById("navbar-title");
+        if (viewName === 'home') navbarTitle.textContent = "ACCOUNT OVERVIEW";
+        if (viewName === 'portfolio') navbarTitle.textContent = "PORTFOLIO INSIGHTS";
+        if (viewName === 'save') navbarTitle.textContent = "SAVE";
+        if (viewName === 'invest') navbarTitle.textContent = "INVEST";
+        if (viewName === 'profile') navbarTitle.textContent = "PROFILE";
+        if (viewName === 'security') navbarTitle.textContent = "SECURITY";
+
+        // 5. Reactive User Context Greeting Module Mutation
+        const greetingPrefix = document.getElementById("greeting-prefix");
+        if (viewName === 'save') {
+            greetingPrefix.textContent = "Hey";
+        } else if (viewName === 'invest') {
+            greetingPrefix.textContent = "Hi";
+        } else {
+            greetingPrefix.textContent = "Howdy";
+        }
+
+        // 6. Navigation Link Highlighting Matrix Synchronization
+        document.querySelectorAll('.nav-item-custom, .bottom-nav-item').forEach(element => {
+            element.classList.remove('active');
+            element.style.background = '';
+            element.style.color = '';
+        });
+
+        const sideActiveItem = document.getElementById('side-' + viewName);
+        const bottomActiveItem = document.getElementById('bottom-' + viewName);
+
+        if (sideActiveItem) {
+            sideActiveItem.classList.add('active');
+            sideActiveItem.style.background = '#EFF6FF';
+            sideActiveItem.style.color = '#1D4ED8';
+        }
+        if (bottomActiveItem) {
+            bottomActiveItem.classList.add('active');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Default view initialization pipeline
+        showView('home');
+    });
+</script>
+
 </body>
+
+<script>
+    const inputsA = document.querySelectorAll('.c-pin-box');
+    const nextBtn = document.querySelector('.cw-btn-next');
+
+    inputsA.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            if (isNaN(e.target.value)) {
+                e.target.value = '';
+                return;
+            }
+            // Ensure text elements transform beautifully into bullet masks
+            if (e.target.value.length === 1) {
+                input.classList.add('filled');
+                if (index < inputsA.length - 1) {
+                    inputsA[index + 1].focus();
+                }
+            }
+            cCompletion();
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace') {
+                if (e.target.value.length === 0 && index > 0) {
+                    inputsA[index - 1].focus();
+                    inputsA[index - 1].value = '';
+                    inputsA[index - 1].classList.remove('filled');
+                } else {
+                    e.target.value = '';
+                    input.classList.remove('filled');
+                }
+                cCompletion();
+            }
+        });
+    });
+
+    function cCompletion() {
+        const allFilled = Array.from(inputsA).every(input => input.value.length === 1);
+        if (allFilled) {
+            nextBtn.classList.add('active');
+        } else {
+            nextBtn.classList.remove('active');
+        }
+    }
+</script>
+
+<script>
+    const inputs = document.querySelectorAll('.cw-pin-box');
+    const submitBtn = document.querySelector('.cw-btn-submit');
+
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            if (isNaN(e.target.value)) {
+                e.target.value = '';
+                return;
+            }
+            // Ensure text elements transform beautifully into bullet masks
+            if (e.target.value.length === 1) {
+                input.classList.add('filled');
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            }
+            checkCompletion();
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace') {
+                if (e.target.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                    inputs[index - 1].value = '';
+                    inputs[index - 1].classList.remove('filled');
+                } else {
+                    e.target.value = '';
+                    input.classList.remove('filled');
+                }
+                checkCompletion();
+            }
+        });
+    });
+
+    function checkCompletion() {
+        const allFilled = Array.from(inputs).every(input => input.value.length === 1);
+        if (allFilled) {
+            submitBtn.classList.add('active');
+        } else {
+            submitBtn.classList.remove('active');
+        }
+    }
+</script>
+
+<script>
+    const wName = document.getElementById('welcomeName');
+    const balA = document.getElementById('balAmount');
+    const balD = document.getElementById('balDecimals');
+    const balA2 = document.getElementById('balAmount2');
+    const balD2 = document.getElementById('balDecimals2');
+    const balI = document.getElementById('balInvest');
+    const uName = document.getElementById('unameProfile');
+    const full_Name = document.getElementById('fullName');
+    const eProfile = document.getElementById('emailProfile');
+    const pProfile = document.getElementById('phoneProfile');
+    const cUser = localStorage.getItem('currentUser');
+
+    const normalizeInlineUser = (user = {}) => ({
+        email: user.user_email || user.email || '',
+        fname: user.user_first_name || user.fname || '',
+        lname: user.user_last_name || user.lname || '',
+        username: user.user_name || user.username || '',
+        phone: user.user_phone_number || user.phone || '',
+        password: user.user_password || user.password || '',
+        balance: user.balance || '1000.00',
+        pin: user.pin || '0000'
+    });
+
+    const storedProfile = cUser ? JSON.parse(localStorage.getItem(cUser) || 'null') : null;
+    const savedUsers = JSON.parse(localStorage.getItem('details') || '[]');
+    const uD = storedProfile ? normalizeInlineUser(storedProfile) : (savedUsers.length ? normalizeInlineUser(savedUsers[savedUsers.length - 1]) : null);
+
+    if (uD) {
+        wName.innerHTML = uD.lname || uD.fname || 'Investor';
+        uName.value = uD.username || '';
+        full_Name.innerHTML = `${uD.fname || ''} ${uD.lname || ''}`.trim() || 'Investor';
+        eProfile.innerHTML = uD.email || '';
+        pProfile.innerHTML = uD.phone ? `+234${uD.phone.slice(1)}` : '';
+        const balance = parseFloat(uD.balance || 1000).toFixed(2);
+        balA.innerHTML = balance.slice(0, balance.indexOf('.'));
+        balD.innerHTML = balance.slice(balance.indexOf('.'));
+        balA2.innerHTML = balance.slice(0, balance.indexOf('.'));
+        balD2.innerHTML = balance.slice(balance.indexOf('.'));
+        balI.innerHTML = `₦ ${balance}`;
+    } else {
+        wName.innerHTML = 'Investor';
+        uName.value = '';
+        full_Name.innerHTML = 'Investor';
+        eProfile.innerHTML = '';
+        pProfile.innerHTML = '';
+        balA.innerHTML = '1,000';
+        balD.innerHTML = '.00';
+        balA2.innerHTML = '1,000';
+        balD2.innerHTML = '.00';
+        balI.innerHTML = '₦ 1000.00';
+    }
+</script>
+
+<script>
+    const inputField = document.getElementById('payment-amount');
+    const payButton = document.getElementById('pay-btn');
+
+    // Create a hidden canvas span gauge to flawslessly measure text width dynamically
+    const visualGauge = document.createElement('span');
+    visualGauge.style.font = "500 44px 'Inter', sans-serif";
+    visualGauge.style.visibility = 'hidden';
+    visualGauge.style.position = 'absolute';
+    visualGauge.style.whiteSpace = 'pre';
+    document.body.appendChild(visualGauge);
+
+    inputField.addEventListener('input', (e) => {
+        let value = e.target.value;
+
+        // 1. Remove everything except numbers and a single decimal point
+        value = value.replace(/[^0-9.]/g, '');
+
+        // 2. Prevent multiple decimal points (keep only the first one)
+        const pointParts = value.split('.');
+        if (pointParts.length > 2) {
+            value = pointParts[0] + '.' + pointParts.slice(1).join('');
+        }
+
+        // 3. Enforce maximum of 2 decimal places for precise currency standard
+        if (pointParts[1] && pointParts[1].length > 2) {
+            value = pointParts[0] + '.' + pointParts[1].slice(0, 2);
+        }
+
+        e.target.value = value;
+
+        // Compute dynamic field sizing seamlessly
+        if (value.length === 0) {
+            inputField.style.width = '30px';
+            payButton.classList.remove('active');
+        } else {
+            visualGauge.textContent = value;
+            // Minor layout buffer calculation to ensure the native caret doesn't truncate/wrap
+            inputField.style.width = (visualGauge.offsetWidth + 14) + 'px';
+            payButton.classList.add('active');
+        }
+    });
+
+    // Block explicit non-numeric/non-decimal keys early on keydown for a cleaner desktop typing flow
+    inputField.addEventListener('keydown', (e) => {
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', '.'];
+        if (!allowedKeys.includes(e.key) && isNaN(Number(e.key))) {
+            e.preventDefault();
+        }
+    });
+</script>
+
+<script>
+    const inputF = document.getElementById('withdrawal-amount');
+    const payButton2 = document.getElementById('withdraw-btn');
+
+    // Create a hidden canvas span gauge to flawslessly measure text width dynamically
+    const visualGauge = document.createElement('span');
+    visualGauge.style.font = "500 44px 'Inter', sans-serif";
+    visualGauge.style.visibility = 'hidden';
+    visualGauge.style.position = 'absolute';
+    visualGauge.style.whiteSpace = 'pre';
+    document.body.appendChild(visualGauge);
+
+    inputF.addEventListener('input', (e) => {
+        let value = e.target.value;
+
+        // 1. Remove everything except numbers and a single decimal point
+        value = value.replace(/[^0-9.]/g, '');
+
+        // 2. Prevent multiple decimal points (keep only the first one)
+        const pointParts = value.split('.');
+        if (pointParts.length > 2) {
+            value = pointParts[0] + '.' + pointParts.slice(1).join('');
+        }
+
+        // 3. Enforce maximum of 2 decimal places for precise currency standard
+        if (pointParts[1] && pointParts[1].length > 2) {
+            value = pointParts[0] + '.' + pointParts[1].slice(0, 2);
+        }
+
+        e.target.value = value;
+
+        // Compute dynamic field sizing seamlessly
+        if (value.length === 0) {
+            inputF.style.width = '30px';
+            payButton2.classList.remove('active');
+        } else {
+            visualGauge.textContent = value;
+            // Minor layout buffer calculation to ensure the native caret doesn't truncate/wrap
+            inputF.style.width = (visualGauge.offsetWidth + 14) + 'px';
+            payButton2.classList.add('active');
+        }
+    });
+
+    // Block explicit non-numeric/non-decimal keys early on keydown for a cleaner desktop typing flow
+    inputF.addEventListener('keydown', (e) => {
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', '.'];
+        if (!allowedKeys.includes(e.key) && isNaN(Number(e.key))) {
+            e.preventDefault();
+        }
+    });
+</script>
+
+<!-- Load Paystack's script from their CDN -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script src="dashboard.js"></script>
+
+<script>
+    //Password Toggle
+
+    const password = document.getElementById("Cpassword");
+    const toggle = document.getElementById("togglePassword");
+
+    toggle.addEventListener("click", function () {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // Change icon
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+    });
+
+    //Balance Toggle
+
+    const balAmount = document.getElementById("balAmount");
+    const balDecimals = document.getElementById('balDecimals')
+    const toggle2 = document.getElementById("toggleBalance");
+
+    let isHidden = false;
+
+    toggle2.addEventListener("click", function () {
+
+        if (isHidden) {
+            balAmount.textContent = balAmount.dataset.balance;
+            balDecimals.textContent = balDecimals.dataset.decimal;
+        } else {
+            balAmount.dataset.balance = balAmount.textContent;
+            balAmount.textContent = "******";
+            balDecimals.dataset.decimal = balDecimals.textContent;
+            balDecimals.textContent = "**";
+        }
+
+        isHidden = !isHidden;
+
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+    });
+
+    //Balance2 Toggle
+
+    const balAmount2 = document.getElementById("balAmount2");
+    const balDecimals2 = document.getElementById('balDecimals2')
+    const toggle3 = document.getElementById("toggleBalance2");
+
+    let isHidden2 = false;
+
+    toggle3.addEventListener("click", function () {
+
+        if (isHidden2) {
+            balAmount2.textContent = balAmount2.dataset.balance;
+            balDecimals2.textContent = balDecimals2.dataset.decimal;
+        } else {
+            balAmount2.dataset.balance = balAmount2.textContent;
+            balAmount2.textContent = "******";
+            balDecimals2.dataset.decimal = balDecimals2.textContent;
+            balDecimals2.textContent = "**";
+        }
+
+        isHidden2 = !isHidden2;
+
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+    });
+
+</script>
 
 </html>
