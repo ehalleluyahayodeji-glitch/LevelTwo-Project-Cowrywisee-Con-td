@@ -229,8 +229,6 @@ const checkPIN = () => {
 }
 
 
-//Change PIN
-
 const pin1 = document.getElementById('pinNo1');
 const pin2 = document.getElementById('pinNo2');
 const pin3 = document.getElementById('pinNo3');
@@ -275,8 +273,6 @@ const changePIN = () => {
     }
 }
 
-
-//Terminate Account
 
 const closeAccount = () => {
     const uD = getCurrentUserProfile();
@@ -331,11 +327,10 @@ const addCashBtn = () => {
             const handler = PaystackPop.setup({
                 key: 'pk_test_277a98f5e34b8a347cf8a266fc1cf5238722528a',
                 email: 'testcustomer@gmail.com',
-                amount: `${payAmt.value.trim()}00`, // ₦5,000 - Paystack uses KOBO (multiply naira by 100)
+                amount: `${payAmt.value.trim()}00`, 
                 currency: 'NGN',
 
                 callback: function (response) {
-                    // This runs AFTER successful payment
                     const uD = getCurrentUserProfile();
                     if (!uD) return;
 
@@ -349,17 +344,15 @@ const addCashBtn = () => {
                         console.log('Payment done! Reference:', response.reference);
                         alert(`Payment successful! Ref: ${response.reference}\nAmount: ₦${payBal}`);
                         location.reload();
-                        //     alert(`Deposit of ₦${payBal} is done successfully...`);
                     }, 1000);
                 },
 
                 onClose: function () {
-                    // This runs if the user closes the popup without paying
                     alert('You closed the payment popup.');
                 }
             });
 
-            handler.openIframe(); // Opens the Paystack popup
+            handler.openIframe(); 
         } else {
 
         }
@@ -421,8 +414,6 @@ const withdrawBtn = () => {
     }
 
 }
-
-//Onload Code
 window.addEventListener('DOMContentLoaded', () => {
     fetchInfo();
 });

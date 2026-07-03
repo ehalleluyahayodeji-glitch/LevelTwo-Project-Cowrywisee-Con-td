@@ -1,4 +1,4 @@
-/* GLOBAL STYLES */
+
 body {
     background-color: #F4F6FA;
     font-family: 'Inter', sans-serif;
@@ -8,12 +8,10 @@ body {
     overflow-x: hidden;
 }
 
-/*My Styling*/
 
 .logo-div{
     font-size: 30px;
     font-weight: 500;
-    /*margin-left: 40px;*/
 }
 
 .logo-div img{
@@ -49,7 +47,6 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: rgb(108, 130, 163);
-    /*padding: 0.5rem;*/
     transition: color 0.2s ease;
 }
 
@@ -78,7 +75,6 @@ body {
 }
 
 .dropdown-item-custom:hover {
-    /*color: rgba(10, 51, 108, 0.5);*/
     opacity: 0.5;
 }
 
@@ -121,7 +117,6 @@ body {
     font-size: 15.2px;
     font-weight: 400;
 }
-/* Label styling */
 .input-group2 label {
     position: absolute;
     top: 50%;
@@ -135,12 +130,11 @@ body {
     transition: 0.3s ease;
 }
 
-/* Move label up + change color when focused */
 .input-group2 input:focus + label,
 .input-group2 input:valid + label {
     top: -8px;
     font-size: 12px;
-    color: rgb(0, 102, 245); /* 👈 your color */
+    color: rgb(0, 102, 245); 
 }
 
 .input-group2 input:focus {
@@ -178,7 +172,6 @@ body {
     transition: 0.3s;
 }
 
-/* SECTION SEPARATOR TYPOGRAPHY */
 .section-big-title {
     font-size: 24.96px;
     font-weight: 600;
@@ -187,7 +180,6 @@ body {
     opacity: 0.8;
 }
 
-/* PROFILE INTERFACE IDENTIFIER BLOCK */
 .profile-identity-card {
     display: flex;
     align-items: center;
@@ -221,7 +213,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* SYSTEM DATA FORM STRUCTURAL RIGGING */
 .profile-data-row {
     display: grid;
     grid-template-columns: 360px 1fr;
@@ -252,7 +243,6 @@ body {
     padding-top: 2px;
 }
 
-/* BUTTON GRAPHICS PACK */
 .btn-cowry-blue {
     background: #0067F5;
     color: #fff;
@@ -268,7 +258,6 @@ body {
     opacity: 0.9;
 }
 
-/* TOGGLE ENGINE GRAPHICS */
 .form-switch-custom {
     width: 44px;
     height: 24px;
@@ -319,7 +308,6 @@ body {
     cursor: pointer;
 }
 
-/* CARD MODAL CONTAINER FRAME */
 .cw-modal-card {
     background-color: #FFFFFF;
     width: 100%;
@@ -331,7 +319,6 @@ body {
     text-align: center;
 }
 
-/* TOP RIGHT CLOSE ICON BLOCK */
 .cw-modal-close {
     position: absolute;
     top: 24px;
@@ -349,9 +336,8 @@ body {
     color: #475569;
 }
 
-/* HEADER TYPOGRAPHY SYSTEM */
 .cw-modal-title {
-    color: #002D72; /* Dark Cowrywise brand navy blue */
+    color: #002D72; 
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -365,7 +351,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* PIN GRID HOUSING MODULE */
 .cw-pin-container {
     display: flex;
     justify-content: center;
@@ -389,17 +374,15 @@ body {
 
 .c-pin-box.filled, .cw-pin-box.filled {
     color: #0066F5;
-    font-size: 16px; /* Scaled down specifically for geometric circular bullet rendering */
+    font-size: 16px; 
     line-height: 58px;
 }
 
-/* Focus layout enhancements for input state mimicry */
 .cw-pin-box:focus {
     border-color: #0066F5;
     box-shadow: 0 0 0 3px rgba(0, 102, 245, 0.1);
 }
 
-/* HELPER FORGOT MECHANISM MATRIX */
 .cw-reset-text {
     font-size: 14px;
     color: #64748B;
@@ -415,9 +398,8 @@ body {
     text-decoration: underline;
 }
 
-/* PRIMARY TERMINAL ACTION TRIGGER BUTTON */
 .cw-btn-next {
-    background-color: #7BB1FA; /* Specific crisp muted layout shade seen in image state */
+    background-color: #7BB1FA; 
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 600;
@@ -433,9 +415,8 @@ body {
     background-color: #5599F7;
 }
 
-/* ACTION INITIATOR TERMINAL BUTTON */
 .cw-btn-submit {
-    background-color: #7BB1FA; /* Matches the clean crisp signature disabled/inactive status state */
+    background-color: #7BB1FA;
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 600;
@@ -467,7 +448,6 @@ body {
     color: rgb(0, 103, 245);
 }
 
-/* TOP NAVBAR */
 .top-navbar {
     position: fixed;
     top: 0;
@@ -523,7 +503,6 @@ body {
     justify-content: center;
 }
 
-/* LEFT SIDEBAR */
 .sidebar-fixed {
     position: fixed;
     top: 60px;
@@ -573,7 +552,6 @@ body {
     font-weight: 600;
 }
 
-/* SIDEBAR ADDITION - ALSO FROM COWRYWISE */
 .sidebar-sub-item {
     display: flex;
     align-items: center;
@@ -590,7 +568,6 @@ body {
     background: #F3F4F6;
 }
 
-/* FIXED BOTTOM NAV FOR MOBILE */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -633,7 +610,6 @@ body {
     margin-bottom: 1px;
 }
 
-/* MAIN CONTENT AREA */
 .main-content {
     margin-left: 200px;
     margin-top: 60px;
@@ -672,7 +648,6 @@ body {
     font-size: 14px;
 }
 
-/* HOME VIEW GRID */
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 540px;
@@ -680,7 +655,6 @@ body {
     align-items: start;
 }
 
-/* LEFT COLUMN - BALANCE CARD */
 .balance-card {
     background: #0066F5;
     border-radius: 20px;
@@ -726,7 +700,6 @@ body {
     background: #0a3a85;
 }
 
-/* RIGHT COLUMN - STACKED SECTIONS */
 .section-heading {
     font-size: 20px;
     font-weight: 600;
@@ -772,7 +745,6 @@ body {
     border-color: #1D4ED8;
 }
 
-/* PORTFOLIO VIEW LAYOUT */
 .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -828,7 +800,6 @@ body {
     border-radius: 50px;
 }
 
-/* SAVE VIEW SCROLLBAR ENGINE */
 .save-scroll-row {
     display: flex;
     gap: 14px;
@@ -875,7 +846,6 @@ body {
     z-index: 10;
 }
 
-/* INVEST VIEW MODULE STYLES */
 .invest-more-card {
     width: 250px;
     height: 200px;
@@ -897,7 +867,6 @@ body {
     font-size: 18.4px;
     font-weight: 600;
     line-height: 1.3;
-    /*max-width: 90px;*/
 }
 .invest-card-illustration {
     position: absolute;
@@ -918,7 +887,6 @@ body {
     text-decoration: underline;
 }
 
-/* CENTRAL MODAL CONTAINER CONTAINER */
 .cw-portfolio-modal {
     background-color: #FFFFFF;
     width: 100%;
@@ -929,7 +897,6 @@ body {
     position: relative;
 }
 
-/* WINDOW CLOSE ICON TRIGGER */
 .cw-close-btn {
     position: absolute;
     top: 24px;
@@ -946,12 +913,11 @@ body {
     color: #475569;
 }
 
-/* HEADER ROUTE NAVIGATION LINK */
 .cw-header-nav {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #0066F5; /* Standard bright Cowrywise blue */
+    color: #0066F5; 
     font-size: 14.5px;
     font-weight: 600;
     text-decoration: none;
@@ -959,7 +925,6 @@ body {
     cursor: pointer;
 }
 
-/* CURRENCY AMOUNT CAPTURE BLOCK */
 .cw-amount-display-container {
     display: flex;
     align-items: center;
@@ -971,11 +936,10 @@ body {
 .cw-naira-symbol {
     font-size: 44px;
     font-weight: 500;
-    color: #002D72; /* Corporate trademark dark blue */
+    color: #002D72; 
     line-height: 1;
 }
 
-/* FUNCTIONAL NUMERIC INPUT FIELD WITH NATIVE BLINKING CARET */
 .cw-amount-input {
     font-size: 44px;
     font-weight: 500;
@@ -987,12 +951,11 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     line-height: 1;
-    min-width: 80%; /* Base starting width for the cursor */
-    caret-color: #002D72; /* Inherits the elegant brand color and blinks natively */
+    min-width: 80%; 
+    caret-color: #002D72; 
     transition: width 0.05s ease;
 }
 
-/* PAYMENT SELECTION METHOD BLOCK */
 .cw-payment-method-row {
     display: flex;
     align-items: center;
@@ -1004,12 +967,12 @@ body {
 .cw-bank-icon-frame {
     width: 40px;
     height: 40px;
-    background-color: #E6F4EA; /* Very light green circle backdrop */
+    background-color: #E6F4EA; 
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #137333; /* Soft banking green color icon */
+    color: #137333; 
     font-size: 18px;
 }
 
@@ -1031,7 +994,6 @@ body {
     margin: 0;
 }
 
-/* CUSTOM SELECTION RADIO GRAPHIC */
 .cw-radio-indicator {
     width: 18px;
     height: 18px;
@@ -1049,14 +1011,13 @@ body {
     border-radius: 50%;
 }
 
-/* FOOTER FORWARD BUTTON TRUNCATION */
 .cw-action-footer {
     display: flex;
     justify-content: flex-end;
 }
 
 .cw-btn-pay {
-    background-color: #7BB1FA; /* Specific signature variant hue matching screenshot state */
+    background-color: #7BB1FA;
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 600;
@@ -1068,14 +1029,13 @@ body {
 }
 
 .cw-btn-pay.active {
-    background-color: #0066F5; /* Deepens to active state color when an amount is typed */
+    background-color: #0066F5; 
 }
 
 .cw-btn-pay:hover {
     opacity: 0.9;
 }
 
-/* RESPONSIVENESS MEDIA QUERY */
 @media (max-width: 1024px) {
     .dashboard-grid, .portfolio-grid {
         grid-template-columns: 1fr !important;
@@ -1115,7 +1075,6 @@ body {
         font-size: 11px;
         letter-spacing: 1px;
     }
-    /* Save View Responsive Rules */
     .save-stats-row {
         flex-direction: column !important;
         gap: 20px !important;
@@ -1126,7 +1085,6 @@ body {
     .save-section-heading {
         font-size: 14px !important;
     }
-    /* Invest View Responsive Rules */
     .invest-stats-row {
         flex-direction: column !important;
         gap: 20px !important;

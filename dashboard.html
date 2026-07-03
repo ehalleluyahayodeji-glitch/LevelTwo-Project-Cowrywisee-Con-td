@@ -18,7 +18,6 @@
 <div id="loader" style="display: none;">
     <img src="IMAGE/gif-logo-loading.gif" alt="Loading">
 </div>
-
 <div id="app">
     <nav class="top-navbar">
         <div class="d-flex align-items-center">
@@ -27,7 +26,6 @@
             </div>
         </div>
         <div class="navbar-center" id="navbar-title">ACCOUNT OVERVIEW</div>
-
         <div class="d-flex align-items-center gap-3">
             <div class="pill-badge-maroon" style="cursor: pointer;">
                 <img src="IMAGE/seed_icon.png" style="width: 20px">
@@ -39,7 +37,6 @@
                     <img src="IMAGE/dashboard-logo (1).svg" style="width: 40px">
                 </div>
                 <ul class="navbar-nav me-1 me-lg-4 me-md-3 my-2 my-lg-0 index-ul d-lg-flex">
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                         <div class="dropdown-menu" style="min-width: 120px;">
@@ -59,16 +56,12 @@
                                     <span class="fw-semibold d-block .a-profile">Logout</span>
                                 </div>
                             </a>
-
-
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
-
     <aside class="sidebar-fixed">
         <div class="sidebar-greeting">
             <span class="fw-normal" id="greeting-prefix" style="color: rgb(174, 185, 204); font-size: 20.48px; font-weight: 600">Howdy</span>
@@ -76,7 +69,6 @@
         </div>
         <ul class="nav-items-list">
             <li class="nav-item-custom active" id="side-home" onclick="showView('home')">
-                <!--            <i class="bi bi-house-door-fill"></i> -->
                 <img src="IMAGE/sidebar-home.svg">
                 Home
             </li>
@@ -109,7 +101,6 @@
                 </i> Referral
             </li>
         </ul>
-
         <div style="border-top: 1px solid #E5E7EB; margin: 16px 0;"></div>
         <div style="font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: #9CA3AF; padding-left: 12px; margin-bottom: 10px;">ALSO FROM COWRYWISE</div>
         <div class="sidebar-sub-item">
@@ -127,7 +118,6 @@
             <i class="bi bi-arrow-up-right text-muted"></i>
         </div>
     </aside>
-
     <nav class="bottom-nav">
         <div class="bottom-nav-item active" id="bottom-home" onclick="showView('home')">
             <i class="bi bi-house-door-fill"></i>
@@ -162,7 +152,6 @@
             <span>Referral</span>
         </div>
     </nav>
-
     <main class="main-content">
         <div class="tab-bar-container" id="tab-bar-wrapper">
             <div class="tab-pill-group">
@@ -170,14 +159,12 @@
                 <div id="tab-portfolio" class="tab-pill inactive" onclick="showView('portfolio')">Portfolio</div>
             </div>
         </div>
-
         <div class="tab-bar-container" id="tab-bar-wrapper2" style="display: none">
             <div class="tab-pill-group">
                 <div id="tab-profile" class="tab-pill active" onclick="showView('profile')">Profile</div>
                 <div id="tab-security" class="tab-pill inactive" onclick="showView('security')">Security</div>
             </div>
         </div>
-
         <div id="view-home">
             <div class="dashboard-grid">
                 <div class="balance-card">
@@ -188,12 +175,10 @@
                             <i class="fa fa-eye" id="toggleBalance"></i>
                         </div>
                         <div class="badge-yellow">
-                            <!--                        ⚡ -->
                             <img src="IMAGE/lightening.svg" style="width: 10px">
                             1
                         </div>
                     </div>
-
                     <div class="mt-2 mb-auto">
                         <div class="d-flex align-items-baseline flex-wrap">
                             <sup style="font-size:23.6px; font-weight: 500; padding-right: 8px">₦</sup>
@@ -201,13 +186,11 @@
                             <span class="balance-decimals" id="balDecimals">.00</span>
                         </div>
                     </div>
-
                     <div class="bottom-pill-btn">
                         <span>✦ ₦ NO return in Jun</span>
                         <i class="bi bi-chevron-up"></i>
                     </div>
                 </div>
-
                 <div class="d-flex flex-column gap-1">
                     <div class="bg-white p-3 rounded-4 border-0">
                         <h3 class="section-heading">Add cash</h3>
@@ -222,7 +205,6 @@
                             <div class="circle-plus-btn" data-bs-toggle="modal" data-bs-target="#myModalAddCash">+</div>
                         </div>
                     </div>
-
                     <div id="carouselExample" class="carousel slide mt-3">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -250,14 +232,12 @@
                 </div>
             </div>
         </div>
-
         <div id="view-portfolio" style="display: none;">
             <div class="d-flex justify-content-end mb-4">
                 <a href="#" style="font-size: 16px; color: #1574F6; text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 500">
                     <i class="fa-regular fa-envelope" style="font-size: 16px;"></i> Request investment letter
                 </a>
             </div>
-
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <div class="card-header-row">
@@ -274,7 +254,6 @@
                         <span style="font-size: 11px; color: #9CA3AF; display: block; margin-bottom: 2px;">Today</span>
                         <span style="font-size: 24.96px; font-weight: 400; color: rgb(4, 46, 104);">₦ 0K</span>
                     </div>
-
                     <div style="margin-top: 12px; width: 100%;">
                         <svg width="100%" height="100" viewBox="0 0 400 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 0 85 L 340 85 L 400 15 L 400 85 Z" fill="rgba(59,130,246,0.08)" />
@@ -290,11 +269,9 @@
                         Steady progress. Sometimes holding your ground is growth too.
                     </div>
                 </div>
-
                 <div class="portfolio-card">
                     <div class="card-header-row">
                         <div class="d-flex align-items-center">
-<!--                            <span class="green-indicator"></span>-->
                             <img src="IMAGE/portfolio-earnings.svg" style="padding: 0px 6px">
                             <span class="portfolio-card-title">Earnings</span>
                         </div>
@@ -309,11 +286,9 @@
                         <span style="font-size: 13px; color: #9CA3AF; text-align: center; margin-top: 12px;">No data yet</span>
                     </div>
                 </div>
-
                 <div class="portfolio-card">
                     <div class="card-header-row">
                         <div class="d-flex align-items-center" style="padding: 20px 0px">
-<!--                            <span class="green-indicator"></span>-->
                             <img src="IMAGE/portfolio-breakdown.svg" style="padding: 0px 6px">
                             <span class="portfolio-card-title">Breakdown</span>
                         </div>
@@ -332,7 +307,6 @@
                 </div>
             </div>
         </div>
-
         <div id="view-save" style="display: none;">
             <div class="save-stats-row" style="display: flex; align-items: flex-start; gap: 60px; padding: 8px 0 32px 0;">
                 <div>
@@ -345,7 +319,6 @@
                         <span style="font-size: 17.92px; font-weight: 700; color: #6882A4;">.00</span>
                     </div>
                 </div>
-
                 <div>
                     <div style="font-size: 18px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 10px;">Add cash</div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
@@ -358,7 +331,6 @@
                     </div>
                 </div>
             </div>
-
             <div style="margin-bottom: 32px;">
                 <h6 class="save-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Save by myself</h6>
                 <div style="position: relative;">
@@ -419,7 +391,6 @@
                     </div>
                 </div>
             </div>
-
             <div style="margin-top: 36px;">
                 <h6 class="save-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Save with others</h6>
                 <div style="position: relative;">
@@ -438,7 +409,6 @@
                                 <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
                             </div>
                         </div>
-
                         <div class="save-scroll-card" style="background: #ECFBEC;">
                             <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #ECFBEC;">
                                 <img src="IMAGE/savings-football.svg" style="width: 70px">
@@ -448,7 +418,6 @@
                                 <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
                             </div>
                         </div>
-
                         <div class="save-scroll-card" style="background: #FBF9FF;">
                             <div style="width: 70px; height: 70px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: #FBF9FF;">
                                 <img src="IMAGE/savings-basketball.svg" style="width: 70px">
@@ -458,7 +427,6 @@
                                 <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; color: rgb(174, 185, 204); margin-top: 2px; background: #F3FBFF; width: fit-content; margin-left: 10px; padding: 4px 15px; border-top-right-radius: 8px; border-top-left-radius: 8px">EMPTY</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="save-arrow-btn" onclick="this.previousElementSibling.scrollBy({left: 200, behavior: 'smooth'})">
                         <i class="bi bi-chevron-right"></i>
@@ -466,7 +434,6 @@
                 </div>
             </div>
         </div>
-
         <div id="view-invest" style="display: none;">
             <div class="invest-stats-row" style="display: flex; align-items: flex-start; gap: 80px; padding: 8px 0 36px 0;">
                 <div>
@@ -481,7 +448,6 @@
                         <span class="balance-decimals" id="balDecimals2">.00</span>
                     </div>
                 </div>
-
                 <div class="invest-addcash">
                     <h5 style="font-size: 18px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 10px;">Add cash</h5>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
@@ -493,12 +459,9 @@
                         <div style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #F5F6FA; display: flex; align-items: center; justify-content: center; font-size: 14px; color: rgb(4, 46, 104); cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModalAddCash">+</div>
                     </div>
                 </div>
-
             </div>
-
             <div style="margin-bottom: 32px;">
                 <h6 class="invest-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">Investments</h6>
-
                 <div style="background: #E1F6FF; border-radius: 14px; padding: 20px 20px; display: inline-flex; align-items: center; gap: 16px; min-width: 330px; height: 140px; cursor: pointer; transition: filter 0.15s ease;" onmouseover="this.style.filter='brightness(0.96)'" onmouseout="this.style.filter='none'">
                     <img src="IMAGE/invest-naira.svg" style="width: 70px">
                     <div>
@@ -507,10 +470,8 @@
                     </div>
                 </div>
             </div>
-
             <div style="margin-top: 36px;">
                 <h6 class="invest-section-heading" style="font-size: 20px; font-weight: 600; color: rgb(4, 46, 104); margin-bottom: 16px;">More to invest in</h6>
-
                 <div class="invest-cards-row" style="display: flex; gap: 14px; flex-wrap: nowrap; margin-bottom: 20px;">
                     <div class="invest-more-card" style="background: #BDFF97;">
                         <h2 class="invest-card-title" style="color: rgb(0, 88, 46);">NG Stocks</h2>
@@ -518,14 +479,12 @@
                             <img src="IMAGE/invest-ng_stock.webp" style="width: 250px">
                         </div>
                     </div>
-
                     <div class="invest-more-card" style="background: #FCE0C0;">
                         <h2 class="invest-card-title" style="color: rgb(114, 84, 101);">Naira Mutual Funds</h2>
                         <div class="invest-card-illustration">
                             <img src="IMAGE/invest-naira_mf.webp" style="width: 250px">
                         </div>
                     </div>
-
                     <div class="invest-more-card" style="background: #DAE2F5;">
                         <h2 class="invest-card-title" style="color: rgb(30, 43, 117);">Dollar Mutual Funds</h2>
                         <div class="invest-card-illustration">
@@ -533,18 +492,14 @@
                         </div>
                     </div>
                 </div>
-
                 <a href="#" class="invest-footer-link">
                     <i class="bi bi-info-circle" style="font-size: 10px; color: #1775F6;"></i>
                     <span>Learn more about investments</span>
                 </a>
             </div>
         </div>
-
         <div id="view-profile" style="display: none;">
-
             <h5 style="font-size: 24.96px; font-weight: 600; color: rgb(174, 185, 204)">Personalize Details</h5>
-
             <div class="profile-identity-card">
                 <div class="avatar-frame">
                     <img src="IMAGE/dash-profile-icon2.png" style="width: 100px">
@@ -558,7 +513,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Username</div>
@@ -572,21 +526,18 @@
                     <button class="btn-cowry-blue" onclick="changeUsername()">Save Changes</button>
                 </div>
             </div>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Gender</div>
                 </div>
                 <div class="data-value-plain">......</div>
             </div>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Date of Birth</div>
                 </div>
                 <div class="data-value-plain">......</div>
             </div>
-
             <h5 class="section-big-title yes-border mt-5 pb-4">Next of Kin</h5>
             <div class="profile-data-row">
                 <div class="data-value-plain" style="font-weight: 600">No Next Of Kin</div>
@@ -594,7 +545,6 @@
                     <button class="btn-cowry-blue">Add Next Of Kin</button>
                 </div>
             </div>
-
             <h5 class="section-big-title yes-border mt-5 pb-4">Cashout Funds</h5>
             <div class="profile-data-row">
                 <div class="data-value-plain" style="font-weight: 600">Withdraw Cash</div>
@@ -602,30 +552,15 @@
                     <button class="btn-cowry-blue" data-bs-toggle="modal" data-bs-target="#myModalCashout">Withdraw</button>
                 </div>
             </div>
-
-            <!--    <h2 class="section-big-title mt-5">Visibility</h2>-->
-            <!--    <div class="profile-data-row">-->
-            <!--        <div>-->
-            <!--            <div class="data-label-primary">Account Visibility</div>-->
-            <!--            <div class="data-label-subtext" style="max-width: 320px;">Disable my account from being discovered by friends.</div>-->
-            <!--        </div>-->
-            <!--        <div>-->
-            <!--            <div class="form-switch-custom active" onclick="this.classList.toggle('active')"></div>-->
-            <!--        </div>-->
-            <!--    </div>-->
         </div>
-
         <div id="view-security" style="display: none;">
-
             <h5 style="font-size: 24.96px; font-weight: 600; color: rgb(174, 185, 204)" class="yes-border pb-4">Verified Information</h5>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Email Address</div>
                 </div>
                 <div class="data-value-plain" id="emailProfile"></div>
             </div>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Phone Number</div>
@@ -635,9 +570,7 @@
                     <i class="bi bi-pencil-fill text-primary" style="font-size: 12px; cursor: pointer;" id="openModalPhone"  data-bs-toggle="modal" data-bs-target="#myModal"></i>
                 </div>
             </div>
-
             <h2 class="section-big-title yes-border mt-5 pb-4">Password & PIN</h2>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Update Password</div>
@@ -647,7 +580,6 @@
                     <a class="data-value-link" data-bs-toggle="modal" data-bs-target="#myModalPass" style="cursor: pointer">Change Password</a>
                 </div>
             </div>
-
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Update PIN</div>
@@ -657,25 +589,18 @@
                     <a class="data-value-link" data-bs-toggle="modal" data-bs-target="#myModalPinA" style="cursor: pointer">Change PIN</a>
                 </div>
             </div>
-
-
             <h2 class="section-big-title yes-border mt-5 pb-4">Termination</h2>
-
             <div class="profile-data-row py-2">
                 <div class="data-value-danger" onclick="closeAccount()">Close my account</div>
             </div>
         </div>
-
-        <!-- Modal Change Phone Number-->
         <div class="modal fade" id="myModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-header">
                         <h5 class="modal-title section-big-title">Change Phone Number</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-
                     <div class="modal-body">
                         <div class="input-group2">
                             <input type="tel" id="phoneIn" class="w-100" required>
@@ -683,25 +608,19 @@
                             <i class="fa-solid fa-phone ca-phone"></i>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button onclick="changePhone()" class="btn btn-primary w-50 mt-2 ff">Change Phone Number</button>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Modal Change Password-->
         <div class="modal fade" id="myModalPass" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-header">
                         <h5 class="modal-title section-big-title">Change Password</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-
                     <div class="modal-body">
                         <div class="mb-2 input-group2">
                             <input type="password" id="password" class="w-100" required>
@@ -713,20 +632,15 @@
                             <i class="fa fa-eye si-eye" id="togglePassword"></i>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button onclick="changePass()" class="btn btn-primary w-50 mt-2 ff">Change Password</button>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Modal Change PinA-->
         <div class="modal fade" id="myModalPinA" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-body">
                         <div class="cw-modal-card">
                             <button class="cw-modal-close" aria-label="Close modal" data-bs-dismiss="modal">
@@ -735,36 +649,26 @@
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-
                             <h1 class="cw-modal-title">Change PIN</h1>
                             <p class="cw-modal-subtitle">Enter your old Cowrywise PIN</p>
-
                             <div class="cw-pin-container">
                                 <input type="password" class="c-pin-box" id="pNo1" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pNo2" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pNo3" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pNo4" maxlength="1" pattern="\d*" inputmode="numeric">
                             </div>
-
                             <div class="cw-reset-text">
                                 Forgot PIN? <a href="#" class="cw-reset-link">Reset your PIN</a>
                             </div>
-
                             <button class="cw-btn-next" onclick="checkPIN()">Next</button>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Modal Change PinB-->
         <div class="modal fade" id="myModalPinB" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-body">
                         <div class="cw-modal-card">
                             <button class="cw-modal-close" aria-label="Close modal" data-bs-dismiss="modal">
@@ -773,10 +677,8 @@
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-
                             <h1 class="cw-modal-title">Change PIN</h1>
                             <p class="cw-modal-subtitle">Enter your new Cowrywise PIN</p>
-
                             <div class="cw-row-label">Enter new PIN</div>
                             <div class="cw-pin-container" id="new-pin-row">
                                 <input type="password" id="pinNo1" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
@@ -784,7 +686,6 @@
                                 <input type="password" id="pinNo3" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
                                 <input type="password" id="pinNo4" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
                             </div>
-
                             <div class="cw-row-label">Confirm new PIN</div>
                             <div class="cw-pin-container" id="confirm-pin-row">
                                 <input type="password" id="CpinNo1" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
@@ -792,24 +693,16 @@
                                 <input type="password" id="CpinNo3" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
                                 <input type="password" id="CpinNo4" class="cw-pin-box" maxlength="1" pattern="\d*" inputmode="numeric" autocomplete="off">
                             </div>
-
                             <button class="cw-btn-submit" onclick="changePIN()">Change PIN</button>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Modal Add Cash-->
         <div class="modal fade" id="myModalAddCash" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-body">
-
                         <div class="cw-portfolio-modal">
                             <button class="cw-close-btn" aria-label="Close modal" data-bs-dismiss="modal">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -817,12 +710,10 @@
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-
                             <a class="cw-header-nav">
                                 <i class="bi bi-chevron-left" style="stroke-width: 1.5px;"></i>
                                 <span>Add Cash</span>
                             </a>
-
                             <div class="cw-amount-display-container">
                                 <span class="cw-naira-symbol">₦</span>
                                 <input
@@ -835,7 +726,6 @@
                                         autofocus
                                 >
                             </div>
-
                             <div class="cw-payment-method-row">
                                 <div class="cw-bank-icon-frame">
                                     <i class="bi bi-bank"></i>
@@ -848,26 +738,18 @@
                                     <div class="cw-radio-dot"></div>
                                 </div>
                             </div>
-
                             <div class="cw-action-footer">
                                 <button class="cw-btn-pay" id="pay-btn" onclick="addCashBtn()">Pay</button>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Modal Withdraw Cash-->
         <div class="modal fade" id="myModalCashout" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-
                     <div class="modal-body">
-
                         <div class="cw-portfolio-modal">
                             <button class="cw-close-btn" aria-label="Close modal" data-bs-dismiss="modal">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -875,34 +757,21 @@
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-
                             <a class="cw-header-nav">
                                 <i class="bi bi-chevron-left" style="stroke-width: 1.5px;"></i>
                                 <span>Withdraw Cash</span>
                             </a>
-
                             <div class="cw-amount-display-container">
                                 <span class="cw-naira-symbol">₦</span>
-                                <input
-                                        type="text"
-                                        class="cw-amount-input"
-                                        id="withdrawal-amount"
-                                        inputmode="decimal"
-                                        placeholder=""
-                                        value="0"
-                                        autofocus
-                                >
+                                <input type="text"class="cw-amount-input" id="withdrawal-amount" inputmode="decimal" placeholder="" value="0" autofocus>
                             </div>
-
                             <p class="cw-modal-subtitle">Transaction PIN</p>
-
                             <div class="cw-pin-container">
                                 <input type="password" class="c-pin-box" id="pN1" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pN2" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pN3" maxlength="1" pattern="\d*" inputmode="numeric">
                                 <input type="password" class="c-pin-box" id="pN4" maxlength="1" pattern="\d*" inputmode="numeric">
                             </div>
-
                             <div class="cw-payment-method-row">
                                 <div class="cw-bank-icon-frame">
                                     <i class="bi bi-bank"></i>
@@ -915,44 +784,29 @@
                                     <div class="cw-radio-dot"></div>
                                 </div>
                             </div>
-
                             <div class="cw-action-footer">
                                 <button class="cw-btn-pay" id="withdraw-btn" onclick="withdrawBtn()">Withdraw</button>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-
-
         <div class="fav">
             <img src="./images/touch-icon.png" alt="" class="fav-icon">
         </div>
-
     </main>
-
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     function showView(viewName) {
-        // 1. Structural Canvas Node Initialization
         const views = ['home', 'portfolio', 'save', 'invest', 'profile', 'security'];
         views.forEach(v => {
             const viewEl = document.getElementById('view-' + v);
             if (viewEl) viewEl.style.display = 'none';
         });
-
-        // 2. Display View Matrix Selector Execution
         const targetView = document.getElementById('view-' + viewName);
         if (targetView) targetView.style.display = 'block';
-
-        // 3. Tab Pill Group Shell Visibility Control Configuration
         const tabBarWrapper = document.getElementById('tab-bar-wrapper');
         if (viewName === 'home' || viewName === 'portfolio') {
             tabBarWrapper.style.display = 'block';
@@ -968,7 +822,6 @@
         } else {
             tabBarWrapper.style.display = 'none';
         }
-
         const tabBarWrapper2 = document.getElementById('tab-bar-wrapper2');
         if (viewName === 'profile' || viewName === 'security') {
             tabBarWrapper2.style.display = 'block';
@@ -984,9 +837,6 @@
         } else {
             tabBarWrapper2.style.display = 'none';
         }
-
-
-        // 4. Global Structural Heading Content Modifiers Mapping Matrix
         const navbarTitle = document.getElementById("navbar-title");
         if (viewName === 'home') navbarTitle.textContent = "ACCOUNT OVERVIEW";
         if (viewName === 'portfolio') navbarTitle.textContent = "PORTFOLIO INSIGHTS";
@@ -995,7 +845,6 @@
         if (viewName === 'profile') navbarTitle.textContent = "PROFILE";
         if (viewName === 'security') navbarTitle.textContent = "SECURITY";
 
-        // 5. Reactive User Context Greeting Module Mutation
         const greetingPrefix = document.getElementById("greeting-prefix");
         if (viewName === 'save') {
             greetingPrefix.textContent = "Hey";
@@ -1005,7 +854,6 @@
             greetingPrefix.textContent = "Howdy";
         }
 
-        // 6. Navigation Link Highlighting Matrix Synchronization
         document.querySelectorAll('.nav-item-custom, .bottom-nav-item').forEach(element => {
             element.classList.remove('active');
             element.style.background = '';
@@ -1026,24 +874,19 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Default view initialization pipeline
         showView('home');
     });
 </script>
-
 </body>
-
 <script>
     const inputsA = document.querySelectorAll('.c-pin-box');
     const nextBtn = document.querySelector('.cw-btn-next');
-
     inputsA.forEach((input, index) => {
         input.addEventListener('input', (e) => {
             if (isNaN(e.target.value)) {
                 e.target.value = '';
                 return;
             }
-            // Ensure text elements transform beautifully into bullet masks
             if (e.target.value.length === 1) {
                 input.classList.add('filled');
                 if (index < inputsA.length - 1) {
@@ -1088,7 +931,6 @@
                 e.target.value = '';
                 return;
             }
-            // Ensure text elements transform beautifully into bullet masks
             if (e.target.value.length === 1) {
                 input.classList.add('filled');
                 if (index < inputs.length - 1) {
@@ -1180,8 +1022,6 @@
 <script>
     const inputField = document.getElementById('payment-amount');
     const payButton = document.getElementById('pay-btn');
-
-    // Create a hidden canvas span gauge to flawslessly measure text width dynamically
     const visualGauge = document.createElement('span');
     visualGauge.style.font = "500 44px 'Inter', sans-serif";
     visualGauge.style.visibility = 'hidden';
@@ -1191,36 +1031,26 @@
 
     inputField.addEventListener('input', (e) => {
         let value = e.target.value;
-
-        // 1. Remove everything except numbers and a single decimal point
         value = value.replace(/[^0-9.]/g, '');
-
-        // 2. Prevent multiple decimal points (keep only the first one)
         const pointParts = value.split('.');
         if (pointParts.length > 2) {
             value = pointParts[0] + '.' + pointParts.slice(1).join('');
         }
-
-        // 3. Enforce maximum of 2 decimal places for precise currency standard
         if (pointParts[1] && pointParts[1].length > 2) {
             value = pointParts[0] + '.' + pointParts[1].slice(0, 2);
         }
 
         e.target.value = value;
-
-        // Compute dynamic field sizing seamlessly
         if (value.length === 0) {
             inputField.style.width = '30px';
             payButton.classList.remove('active');
         } else {
             visualGauge.textContent = value;
-            // Minor layout buffer calculation to ensure the native caret doesn't truncate/wrap
             inputField.style.width = (visualGauge.offsetWidth + 14) + 'px';
             payButton.classList.add('active');
         }
     });
 
-    // Block explicit non-numeric/non-decimal keys early on keydown for a cleaner desktop typing flow
     inputField.addEventListener('keydown', (e) => {
         const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', '.'];
         if (!allowedKeys.includes(e.key) && isNaN(Number(e.key))) {
@@ -1232,8 +1062,6 @@
 <script>
     const inputF = document.getElementById('withdrawal-amount');
     const payButton2 = document.getElementById('withdraw-btn');
-
-    // Create a hidden canvas span gauge to flawslessly measure text width dynamically
     const visualGauge = document.createElement('span');
     visualGauge.style.font = "500 44px 'Inter', sans-serif";
     visualGauge.style.visibility = 'hidden';
@@ -1243,36 +1071,29 @@
 
     inputF.addEventListener('input', (e) => {
         let value = e.target.value;
-
-        // 1. Remove everything except numbers and a single decimal point
         value = value.replace(/[^0-9.]/g, '');
 
-        // 2. Prevent multiple decimal points (keep only the first one)
         const pointParts = value.split('.');
         if (pointParts.length > 2) {
             value = pointParts[0] + '.' + pointParts.slice(1).join('');
         }
 
-        // 3. Enforce maximum of 2 decimal places for precise currency standard
         if (pointParts[1] && pointParts[1].length > 2) {
             value = pointParts[0] + '.' + pointParts[1].slice(0, 2);
         }
 
         e.target.value = value;
 
-        // Compute dynamic field sizing seamlessly
         if (value.length === 0) {
             inputF.style.width = '30px';
             payButton2.classList.remove('active');
         } else {
             visualGauge.textContent = value;
-            // Minor layout buffer calculation to ensure the native caret doesn't truncate/wrap
             inputF.style.width = (visualGauge.offsetWidth + 14) + 'px';
             payButton2.classList.add('active');
         }
     });
 
-    // Block explicit non-numeric/non-decimal keys early on keydown for a cleaner desktop typing flow
     inputF.addEventListener('keydown', (e) => {
         const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', '.'];
         if (!allowedKeys.includes(e.key) && isNaN(Number(e.key))) {
@@ -1281,27 +1102,20 @@
     });
 </script>
 
-<!-- Load Paystack's script from their CDN -->
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <script src="dashboard.js"></script>
 
 <script>
-    //Password Toggle
-
     const password = document.getElementById("Cpassword");
     const toggle = document.getElementById("togglePassword");
 
     toggle.addEventListener("click", function () {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
-
-        // Change icon
         this.classList.toggle("fa-eye");
         this.classList.toggle("fa-eye-slash");
     });
-
-    //Balance Toggle
 
     const balAmount = document.getElementById("balAmount");
     const balDecimals = document.getElementById('balDecimals')
@@ -1326,8 +1140,6 @@
         this.classList.toggle("fa-eye");
         this.classList.toggle("fa-eye-slash");
     });
-
-    //Balance2 Toggle
 
     const balAmount2 = document.getElementById("balAmount2");
     const balDecimals2 = document.getElementById('balDecimals2')

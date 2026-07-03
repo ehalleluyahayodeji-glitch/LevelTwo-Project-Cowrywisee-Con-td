@@ -1,4 +1,4 @@
-// // SIGN UP JS
+
 const userData = JSON.parse(localStorage.getItem('details')) || []
 
 function normalizeUser(user = {}) {
@@ -201,7 +201,7 @@ function createPin (){
             text: "Pin set Successfully",
             className: "info",
             style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
+                background: "linear-gradient(to right, #00b09b, #96c93d)", maxWidth: "100%"
 }
 }).showToast();
         setTimeout(() => {
@@ -210,101 +210,3 @@ function createPin (){
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function getCurrentUser(){
-//     const userData = JSON.parse(localStorage.getItem('details')) || [];
-//     return userData.length ? userData[userData.length - 1] : null;
-// }
-
-// function updateDashboard(){
-//     const user = getCurrentUser();
-//     const greeting = document.getElementById('dashboardGreeting');
-//     const balanceField = document.getElementById('balanceAmount');
-//     const savedState = JSON.parse(localStorage.getItem('dashboardState')) || { balance: 0, hidden: false };
-
-//     if(greeting && user){
-//         greeting.textContent = `Howdy, ${user.user_first_name || user.user_name || 'Investor'}`;
-//     }
-
-//     if(balanceField){
-//         balanceField.textContent = savedState.hidden ? '₦••••••••' : `₦${savedState.balance.toLocaleString('en-NG', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-//     }
-// }
-
-// function saveDashboardState(state){
-//     const currentState = JSON.parse(localStorage.getItem('dashboardState')) || { balance: 0, hidden: false };
-//     localStorage.setItem('dashboardState', JSON.stringify({ ...currentState, ...state }));
-//     updateDashboard();
-// }
-
-// function toggleBalance(){
-//     const currentState = JSON.parse(localStorage.getItem('dashboardState')) || { balance: 0, hidden: false };
-//     saveDashboardState({ hidden: !currentState.hidden });
-// }
-
-// function addCash(amount){
-//     const currentState = JSON.parse(localStorage.getItem('dashboardState')) || { balance: 0, hidden: false };
-//     saveDashboardState({ balance: currentState.balance + amount });
-//     showActionToast(`Added ₦${amount.toLocaleString('en-NG')} to your balance`);
-// }
-
-// function addCashInput(){
-//     const amount = prompt('Enter amount to add (numbers only):');
-//     const numeric = Number(amount?.replace(/[^0-9]/g, ''));
-//     if(numeric && numeric > 0){
-//         addCash(numeric);
-//     } else {
-//         showActionToast('Invalid amount entered');
-//     }
-// }
-
-// function createGoal(){
-//     showActionToast('Goal creation is not available yet. Use this space to plan your savings.');
-// }
-
-// function logout(){
-//     window.location.href = 'Login.html';
-// }
-
-// function showActionToast(message){
-//     const toast = document.createElement('div');
-//     toast.textContent = message;
-//     toast.style.position = 'fixed';
-//     toast.style.bottom = '24px';
-//     toast.style.right = '24px';
-//     toast.style.background = 'rgba(4, 63, 190, 0.95)';
-//     toast.style.color = 'white';
-//     toast.style.padding = '14px 18px';
-//     toast.style.borderRadius = '18px';
-//     toast.style.boxShadow = '0 14px 50px rgba(4, 63, 190, 0.24)';
-//     toast.style.zIndex = '9999';
-//     toast.style.fontSize = '14px';
-//     document.body.appendChild(toast);
-//     setTimeout(() => {
-//         toast.style.opacity = '0';
-//         toast.style.transition = 'opacity 0.3s ease';
-//         setTimeout(() => toast.remove(), 300);
-//     }, 2200);
-// }
-
-// window.addEventListener('DOMContentLoaded', updateDashboard);
-

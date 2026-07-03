@@ -408,7 +408,7 @@ body{
     text-decoration: none;
 }
 
-.page-1 {
+.page-1{
     width: 500px;
     height: 500px;
     padding: 50px;
@@ -418,17 +418,16 @@ body{
     background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.page-1 a {
+.page-1 .btn{
+    display: flex;
+    gap: 10px;
+}
+.page-1 .btn button{
+    padding: 10px;
     color: rgb(10, 47, 102);
-    padding: 12px;
-    margin-left: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #ccc;
-    border-radius: 12px;
     background-color: white;
+    border-color: #ccc;
+    border: 2px solid #ccc;
 }
 
 .page-1 img {
@@ -549,10 +548,10 @@ body{
     
     }
 
-    .page-1 a {
+    .page-1 .btn {
         width: 100%;
         padding: 20px;
-        display: flex;
+        flex-direction: column;
         margin-bottom: 10px;
     }
 
