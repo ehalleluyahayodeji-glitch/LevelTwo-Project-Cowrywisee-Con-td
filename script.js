@@ -69,15 +69,25 @@ if (clickEmail) {
         const confirmPassword = document.getElementById('getUserConfirmPassword').value
         if (email === ""){
                 Toastify({
-                    text: 'Please Kindly fill in all the input!',
+                    text: 'Please Kindly fill in your email!',
                     className: 'info',
                     duration: 4000,
                     style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
                 }).showToast();
         } else if(firstName === "" || lastName === "" || userName === "" || phoneNumber === "" || password === "" || confirmPassword === "" ){
-            alert('Please fill all the input fields!!')
+                Toastify({
+                    text: 'Please Kindly fill all the input!',
+                    className: 'info',
+                    duration: 4000,
+                    style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+                }).showToast();
         } else if(password !== confirmPassword){
-            alert('Password do not match!!!')
+            Toastify({
+                    text: 'Password do not match!!!',
+                    className: 'info',
+                    duration: 4000,
+                    style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+                }).showToast();
         } else{
             const savedUserData = {
                 user_email: email,
@@ -134,7 +144,12 @@ function loginUser (){
         window.location.href = 'dashboard.html'
     }, 1500);
     }else{
-        alert('Invalid email or password. Please try again.')
+        Toastify({
+                    text: 'Invalid email or password. Please try again!',
+                    className: 'info',
+                    duration: 4000,
+                    style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+                }).showToast();
     }
 }
 
@@ -174,9 +189,19 @@ function createPin (){
     const new_pin_four = document.getElementById('newPinFour').value
 
     if (pin_one === "" && pin_two === "" && pin_three === "" && pin_four === "" && new_pin_one === "" && new_pin_two === "" && new_pin_three === "" && new_pin_four === ""){
-        alert('Please Kindly fill in the field!')
+        Toastify({
+                    text: 'Please Kindly fill in the field!',
+                    className: 'info',
+                    duration: 4000,
+                    style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+                }).showToast();
     } else if(pin_one !== new_pin_one || pin_two !== new_pin_two || pin_three !== new_pin_three || pin_four !== new_pin_four){
-        alert("password do not match")
+        Toastify({
+                    text: 'Password do not match!',
+                    className: 'info',
+                    duration: 4000,
+                    style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+                }).showToast();
     } else {
         const savedPin = {pin_one, pin_two, pin_three, pin_four, new_pin_one, new_pin_two, new_pin_three, new_pin_four}
         const pinValue = `${pin_one}${pin_two}${pin_three}${pin_four}`

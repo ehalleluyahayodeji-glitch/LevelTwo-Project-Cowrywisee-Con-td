@@ -427,7 +427,7 @@ body{
     color: rgb(10, 47, 102);
     background-color: white;
     border-color: #ccc;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
 }
 
 .page-1 img {
