@@ -191,9 +191,25 @@
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
-                    console.log(user)
+                    console.log(user);
+
+                    const googleUser = {
+                        email: user.email || '',
+                        user_first_name: user.displayName ? user.displayName.split(' ')[0] : '',
+                        user_last_name: user.displayName ? user.displayName.split(' ').slice(1).join(' ') : '',
+                        user_name: user.email ? `@${user.email.split('@')[0]}` : '',
+                        user_phone_number: '',
+                        user_password: '',
+                        balance: '1000.00',
+                        pin: '0000'
+                    };
+
+                    if (typeof syncUserSession === 'function') {
+                        syncUserSession(googleUser);
+                    }
+
                     setTimeout(() => {
-                        window.location.href = "dashboard.html"
+                        window.location.href = "dashboard.html";
                     }, 1500);
                 })
                 .catch((error) => {

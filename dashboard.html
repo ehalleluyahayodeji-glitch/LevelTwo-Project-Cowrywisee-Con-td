@@ -15,10 +15,16 @@
 </head>
 <body>
 
-<div id="loader" style="display: none;">
-    <img src="IMAGE/gif-logo-loading.gif" alt="Loading">
+<div id="loader" style="display: flex;">
+    <div class="loader-inner">
+        <div class="loader-logo">
+            <img src="IMAGE/dashboard-logo.svg" alt="Cowry logo">
+        </div>
+        <div class="loader-spinner" aria-hidden="true"></div>
+        <div class="loader-text">Loading your dashboard…</div>
+    </div>
 </div>
-<div id="app">
+<div id="app" style="display: none;">
     <nav class="top-navbar">
         <div class="d-flex align-items-center">
             <div class="logo-div ms-5">
