@@ -53,8 +53,8 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center gap-1" style="cursor: pointer">
-                <div class="user-avatar-circle">
-                    <img src="IMAGE/dashboard-logo (1).svg" style="width: 40px">
+                <div class="user-avatar-circle" style="overflow: hidden; display: flex; justify-content: center; align-items: center; padding: 0;">
+                    <img src="IMAGE/dash-profile-icon2.png" id="navAvatarImage" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">
                 </div>
                 <ul class="navbar-nav me-1 me-lg-4 me-md-3 my-2 my-lg-0 index-ul d-lg-flex">
                     <li class="nav-item dropdown">
@@ -224,6 +224,11 @@
                             <button class="pill-btn-outline standard" onclick="addCash('300000')">$ 200</button>
                             <div class="circle-plus-btn" data-bs-toggle="modal" data-bs-target="#myModalAddCash">+</div>
                         </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-4 border-0 mt-3">
+                        <h3 class="section-heading">Transfer Funds</h3>
+                        <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Send money instantly to other users.</p>
+                        <button class="btn-cowry-blue w-100" data-bs-toggle="modal" data-bs-target="#myModalTransfer" style="height: 45px; border-radius: 8px;">Transfer Now</button>
                     </div>
                     <div id="carouselExample" class="carousel slide mt-3">
                         <div class="carousel-inner">
@@ -521,9 +526,10 @@
         <div id="view-profile" style="display: none;">
             <h5 style="font-size: 24.96px; font-weight: 600; color: rgb(174, 185, 204)">Personalize Details</h5>
             <div class="profile-identity-card">
-                <div class="avatar-frame">
-                    <img src="IMAGE/dash-profile-icon2.png" style="width: 100px">
+                <div class="avatar-frame" onclick="document.getElementById('profileImageInput').click()" style="cursor: pointer;">
+                    <img src="IMAGE/dash-profile-icon2.png" id="profileImageDisplay" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
                     <i class="bi bi-camera avatar-camera-icon"></i>
+                    <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
                 </div>
                 <div>
                     <h5 class="profile-name" id="fullName">Adeola Siyanbola</h5>
@@ -544,19 +550,26 @@
                         <label for="unameProfile" id="unameLabel">Username</label>
                     </div>
                     <button class="btn-cowry-blue" onclick="changeUsername()">Save Changes</button>
+                    <button class="btn-cowry-blue" style="background-color: #4A90E2; margin-left: 5px;" onclick="copyUsername()"><i class="bi bi-copy"></i> Copy</button>
                 </div>
             </div>
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Gender</div>
                 </div>
-                <div class="data-value-plain">......</div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="data-value-plain" id="genderProfile">......</div>
+                    <i class="bi bi-pencil-square text-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModalEditProfile"></i>
+                </div>
             </div>
             <div class="profile-data-row">
                 <div>
                     <div class="data-label-primary">Date of Birth</div>
                 </div>
-                <div class="data-value-plain">......</div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="data-value-plain" id="dobProfile">......</div>
+                    <i class="bi bi-pencil-square text-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModalEditProfile"></i>
+                </div>
             </div>
             <div class="profile-data-row">
                 <div>
@@ -568,9 +581,9 @@
             </div>
             <h5 class="section-big-title yes-border mt-5 pb-4">Next of Kin</h5>
             <div class="profile-data-row">
-                <div class="data-value-plain" style="font-weight: 600">No Next Of Kin</div>
+                <div class="data-value-plain" style="font-weight: 600" id="nokProfileDisplay">No Next Of Kin</div>
                 <div class="text-md-start">
-                    <button class="btn-cowry-blue" onclick="alert('Feature coming soon!')">Add Next Of Kin</button>
+                    <button class="btn-cowry-blue" data-bs-toggle="modal" data-bs-target="#myModalNextOfKin">Add Next Of Kin</button>
                 </div>
             </div>
             <h5 class="section-big-title yes-border mt-5 pb-4">Cashout Funds</h5>
@@ -619,9 +632,108 @@
             </div>
             <h2 class="section-big-title yes-border mt-5 pb-4">Termination</h2>
             <div class="profile-data-row py-2">
-                <div class="data-value-danger" onclick="closeAccount()">Close my account</div>
+                <div class="data-value-danger" data-bs-toggle="modal" data-bs-target="#myModalCloseAccount" style="cursor: pointer;">Close my account</div>
             </div>
         </div>
+
+        <div class="modal fade" id="myModalNextOfKin" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content cw-modal-card">
+                    <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h5 class="cw-modal-title mb-0">Next of Kin</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 text-center">
+                        <div class="input-group2 mb-3">
+                            <input type="text" id="nokName" required>
+                            <label for="nokName">Full Name</label>
+                        </div>
+                        <div class="input-group2 mb-3">
+                            <input type="text" id="nokRel" required>
+                            <label for="nokRel">Relationship</label>
+                        </div>
+                        <div class="input-group2 mb-4">
+                            <input type="text" id="nokPhone" required>
+                            <label for="nokPhone">Phone Number</label>
+                        </div>
+                        <button class="btn-cowry-blue w-100 py-3" onclick="saveNextOfKin()">Save Next of Kin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModalEditProfile" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content cw-modal-card">
+                    <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h5 class="cw-modal-title mb-0">Edit Profile Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label text-muted" style="font-size: 13px;">Gender</label>
+                            <select id="editGender" class="form-select" style="background: transparent; border: 1px solid #ddd; height: 50px; border-radius: 8px;">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-muted" style="font-size: 13px;">Date of Birth</label>
+                            <input type="date" id="editDOB" class="form-control" style="background: transparent; border: 1px solid #ddd; height: 50px; border-radius: 8px;">
+                        </div>
+                        <button class="btn-cowry-blue w-100 py-3" onclick="saveProfileDetails()">Save Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModalResetPin" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content cw-modal-card">
+                    <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h5 class="cw-modal-title mb-0">Reset PIN</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 text-center">
+                        <p class="text-muted mb-4" style="font-size: 14px;">Enter your account password to reset your PIN.</p>
+                        <div class="input-group2 mb-4">
+                            <input type="password" id="resetPinPass" required>
+                            <label for="resetPinPass">Account Password</label>
+                        </div>
+                        <h6 class="mb-3" style="color: #0A336C;">Enter New PIN</h6>
+                        <div class="cw-pin-container mb-4">
+                            <input type="password" class="c-pin-box" maxlength="1" id="rP1" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="rP2" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="rP3" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="rP4" pattern="\d*" inputmode="numeric">
+                        </div>
+                        <button class="btn-cowry-blue w-100 py-3" onclick="resetPinAction()">Reset PIN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModalCloseAccount" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content cw-modal-card">
+                    <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h5 class="cw-modal-title text-danger mb-0">Close Account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 text-center">
+                        <p class="mb-4" style="font-size: 14px;">Are you sure you want to terminate your account? This action cannot be undone.</p>
+                        <div class="input-group2 mb-4">
+                            <input type="password" id="closeAccountPass" required>
+                            <label for="closeAccountPass">Account Password</label>
+                        </div>
+                        <button class="btn-cowry-blue w-100 py-3" style="background-color: #dc3545;" onclick="confirmCloseAccount()">Terminate Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="myModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -686,7 +798,7 @@
                                 <input type="password" class="c-pin-box" id="pNo4" maxlength="1" pattern="\d*" inputmode="numeric">
                             </div>
                             <div class="cw-reset-text">
-                                Forgot PIN? <a href="#" class="cw-reset-link">Reset your PIN</a>
+                                Forgot PIN? <a href="#" class="cw-reset-link" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#myModalResetPin">Reset your PIN</a>
                             </div>
                             <button class="cw-btn-next" onclick="checkPIN()">Next</button>
                         </div>
@@ -754,6 +866,38 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="myModalTransfer" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content cw-modal-card">
+                    <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                        <h5 class="cw-modal-title mb-0">Transfer Funds</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 text-center">
+                        <p class="text-muted mb-4" style="font-size: 14px;">Send money instantly using a Cowrywise Username.</p>
+                        
+                        <div class="input-group2 mb-3">
+                            <input type="text" id="transferUsername" placeholder="@username" required>
+                            <label for="transferUsername">Recipient Username</label>
+                        </div>
+                        <div class="input-group2 mb-4">
+                            <input type="number" id="transferAmount" placeholder="e.g. 5000" required>
+                            <label for="transferAmount">Amount (₦)</label>
+                        </div>
+
+                        <h6 class="mb-3" style="color: #0A336C;">Transaction PIN</h6>
+                        <div class="cw-pin-container mb-4">
+                            <input type="password" class="c-pin-box" maxlength="1" id="tP1" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="tP2" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="tP3" pattern="\d*" inputmode="numeric">
+                            <input type="password" class="c-pin-box" maxlength="1" id="tP4" pattern="\d*" inputmode="numeric">
+                        </div>
+                        <button class="btn-cowry-blue w-100 py-3" onclick="transferFunds()">Transfer Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="myModalAddCash" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -858,7 +1002,7 @@
     function showView(viewName) {
         const views = ['home', 'portfolio', 'save', 'invest', 'profile', 'security'];
         if (!views.includes(viewName)) {
-            alert('Feature coming soon!');
+            showToast('Feature coming soon!');
             return;
         }
         views.forEach(v => {
