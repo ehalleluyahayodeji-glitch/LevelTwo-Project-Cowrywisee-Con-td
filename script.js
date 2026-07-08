@@ -11,50 +11,46 @@ function normalizeUser(user = {}) {
         phone: user.user_phone_number || user.phone || '',
         password: user.user_password || user.password || '',
         balance: user.balance || '1000.00',
-        pin: user.pin || '0000'
+        pin: user.pin || '0000',
+        transactions: user.transactions || []
     };
 }
 
 function syncUserSession(user = {}) {
-    const profile = normalizeUser(user);
-    if (!profile.email) return null;
-
-    localStorage.setItem('currentUser', profile.email);
-    localStorage.setItem(profile.email, JSON.stringify(profile));
-
     const allUsers = JSON.parse(localStorage.getItem('details') || '[]');
-    const existingIndex = allUsers.findIndex((entry) => (entry.user_email || entry.email) === profile.email);
+    const tempEmail = user.user_email || user.email;
+    if (!tempEmail) return null;
 
+    const existingIndex = allUsers.findIndex((entry) => (entry.user_email || entry.email) === tempEmail);
+    
+    let finalProfile;
     if (existingIndex >= 0) {
-        allUsers[existingIndex] = {
-            ...allUsers[existingIndex],
-            ...profile,
-            user_email: profile.email,
-            user_first_name: profile.fname,
-            user_last_name: profile.lname,
-            user_name: profile.username,
-            user_phone_number: profile.phone,
-            user_password: profile.password
-        };
+        // User exists! Just load them and DO NOT overwrite their pin, balance, or transactions
+        finalProfile = normalizeUser(allUsers[existingIndex]);
     } else {
+        // New user
+        finalProfile = normalizeUser(user);
         allUsers.push({
-            ...profile,
-            user_email: profile.email,
-            user_first_name: profile.fname,
-            user_last_name: profile.lname,
-            user_name: profile.username,
-            user_phone_number: profile.phone,
-            user_password: profile.password
+            ...finalProfile,
+            user_email: finalProfile.email,
+            user_first_name: finalProfile.fname,
+            user_last_name: finalProfile.lname,
+            user_name: finalProfile.username,
+            user_phone_number: finalProfile.phone,
+            user_password: finalProfile.password
         });
+        localStorage.setItem('details', JSON.stringify(allUsers));
+        
+        const usernameList = allUsers
+            .map((entry) => (entry.user_name || entry.username || '').trim())
+            .filter(Boolean);
+        localStorage.setItem('usernameList', JSON.stringify(usernameList));
     }
 
-    localStorage.setItem('details', JSON.stringify(allUsers));
-    const usernameList = allUsers
-        .map((entry) => (entry.user_name || entry.username || '').trim())
-        .filter(Boolean);
-    localStorage.setItem('usernameList', JSON.stringify(usernameList));
+    localStorage.setItem('currentUser', finalProfile.email);
+    localStorage.setItem(finalProfile.email, JSON.stringify(finalProfile));
 
-    return profile;
+    return finalProfile;
 }
 
 const clickEmail = document.getElementById('continueBtn')

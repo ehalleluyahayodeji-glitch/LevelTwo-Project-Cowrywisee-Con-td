@@ -1,5 +1,24 @@
 const LOGIN_PAGE = 'Login.html';
 
+window.alert = function(message) {
+    if (typeof Toastify !== 'undefined') {
+        Toastify({
+            text: message,
+            duration: 3000,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            style: {
+                background: "linear-gradient(to right, #0A336C, #2E5C9E)",
+                borderRadius: "8px",
+                color: "#ffffff"
+            }
+        }).showToast();
+    } else {
+        console.log("Alert:", message);
+    }
+};
+
 const normalizeUserData = (user = {}) => {
     const email = user.user_email || user.email || '';
     return {
@@ -10,7 +29,8 @@ const normalizeUserData = (user = {}) => {
         phone: user.user_phone_number || user.phone || '',
         password: user.user_password || user.password || '',
         balance: user.balance || '1000.00',
-        pin: user.pin || '0000'
+        pin: user.pin || '0000',
+        transactions: user.transactions || []
     };
 };
 
@@ -81,21 +101,75 @@ const saveCurrentUserProfile = (profile) => {
 };
 
 const fetchInfo = () => {
-    if (!getCurrentUserProfile()) {
-        window.location.href = LOGIN_PAGE;
-    } else {
+    const uD = getCurrentUserProfile();
+    if (!uD) {
         setTimeout(() => {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('app').style.display = 'block';
-        }, 1000);
+            window.location.href = LOGIN_PAGE;
+        }, 3000);
+        return;
     }
+    
+    // Populate DOM elements
+    const wName = document.getElementById('welcomeName');
+    const balA = document.getElementById('balAmount');
+    const balD = document.getElementById('balDecimals');
+    const balA2 = document.getElementById('balAmount2');
+    const balD2 = document.getElementById('balDecimals2');
+    const balI = document.getElementById('balInvest');
+    const uName = document.getElementById('unameProfile');
+    const full_Name = document.getElementById('fullName');
+    const eProfile = document.getElementById('emailProfile');
+    const pProfile = document.getElementById('phoneProfile');
+
+    if (wName) wName.innerHTML = uD.lname || uD.fname || 'Investor';
+    if (uName) uName.value = uD.username || '';
+    if (full_Name) full_Name.innerHTML = `${uD.fname || ''} ${uD.lname || ''}`.trim() || 'Investor';
+    if (eProfile) eProfile.innerHTML = uD.email || '';
+    if (pProfile) pProfile.innerHTML = uD.phone ? `+234${uD.phone.slice(1)}` : '';
+    
+    const balance = parseFloat(uD.balance || 1000).toFixed(2);
+    if (balA) balA.innerHTML = balance.slice(0, balance.indexOf('.'));
+    if (balD) balD.innerHTML = balance.slice(balance.indexOf('.'));
+    if (balA2) balA2.innerHTML = balance.slice(0, balance.indexOf('.'));
+    if (balD2) balD2.innerHTML = balance.slice(balance.indexOf('.'));
+    if (balI) balI.innerHTML = `₦ ${balance}`;
+
+    renderNotifications(uD.transactions || []);
+
+    // Dark Mode Check
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    const dmToggle = document.getElementById('darkModeToggle');
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        if (dmToggle) dmToggle.checked = true;
+    }
+
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        const app = document.getElementById('app');
+        if (loader) loader.style.display = 'none';
+        if (app) app.style.display = 'block';
+        
+        // Initial PIN Check for Firebase Users
+        if (uD.pin === '0000') {
+            const modalElement = document.getElementById('myModalCreatePinDash');
+            if (modalElement) {
+                const modal = new bootstrap.Modal(modalElement, {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                modal.show();
+            }
+        }
+    }, 1000);
 }
 
 const logout = () => {
     localStorage.removeItem('currentUser');
     alert(`Logout successfully\nProceed to Login`);
-
-    window.location.href = LOGIN_PAGE;
+    setTimeout(() => {
+        window.location.href = LOGIN_PAGE;
+    }, 3000);
 }
 
 const changeUsername = () => {
@@ -294,7 +368,7 @@ const closeAccount = () => {
 
             setTimeout(() => {
                 window.location.href = 'signin.html';
-            }, 1000)
+            }, 3000)
         } else {
             alert('Incorrect password, Termination cancelled...');
         }
@@ -338,12 +412,20 @@ const addCashBtn = () => {
 
                     let newBal = currentBal + payBal;
                     uD.balance = newBal.toFixed(2);
+                    
+                    if (!uD.transactions) uD.transactions = [];
+                    uD.transactions.unshift({
+                        type: 'Deposit',
+                        amount: payBal,
+                        date: new Date().toISOString()
+                    });
+
                     saveCurrentUserProfile(uD);
 
                     setTimeout(() => {
                         console.log('Payment done! Reference:', response.reference);
                         alert(`Payment successful! Ref: ${response.reference}\nAmount: ₦${payBal}`);
-                        location.reload();
+                        setTimeout(() => location.reload(), 3000);
                     }, 1000);
                 },
 
@@ -395,11 +477,18 @@ const withdrawBtn = () => {
                         alert(`Insufficient Balance to Initiate this Withdrawal\nCurrent Balance: ₦${currentBal}`);
                     } else {
                         uD.balance = newBal.toFixed(2);
+                        
+                        if (!uD.transactions) uD.transactions = [];
+                        uD.transactions.unshift({
+                            type: 'Withdrawal',
+                            amount: withdrawBal,
+                            date: new Date().toISOString()
+                        });
 
                         saveCurrentUserProfile(uD);
                         setTimeout(() => {
                             alert(`Withdrawal of ₦${withdrawBal} is done successfully...`);
-                            location.reload();
+                            setTimeout(() => location.reload(), 3000);
                         }, 1000);
                     }
                 } else {
@@ -417,3 +506,98 @@ const withdrawBtn = () => {
 window.addEventListener('DOMContentLoaded', () => {
     fetchInfo();
 });
+
+const toggleDarkMode = () => {
+    const dmToggle = document.getElementById('darkModeToggle');
+    if (!dmToggle) return;
+    const isDark = dmToggle.checked;
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'true');
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'false');
+    }
+};
+
+const createPinDash = () => {
+    const p1 = document.getElementById('cPinNo1').value;
+    const p2 = document.getElementById('cPinNo2').value;
+    const p3 = document.getElementById('cPinNo3').value;
+    const p4 = document.getElementById('cPinNo4').value;
+    
+    const c1 = document.getElementById('cCpinNo1').value;
+    const c2 = document.getElementById('cCpinNo2').value;
+    const c3 = document.getElementById('cCpinNo3').value;
+    const c4 = document.getElementById('cCpinNo4').value;
+    
+    const pinA = `${p1}${p2}${p3}${p4}`;
+    const pinB = `${c1}${c2}${c3}${c4}`;
+    
+    if (pinA === "" || pinB === "" || pinA.length < 4 || pinB.length < 4) {
+        alert('Please complete all PIN fields');
+        return;
+    }
+    
+    if (pinA !== pinB) {
+        alert('PINs do not match');
+        document.getElementById('cCpinNo4').focus();
+        return;
+    }
+    
+    if (pinA === '0000') {
+        alert('Cannot use default PIN. Please choose a secure one.');
+        return;
+    }
+    
+    const uD = getCurrentUserProfile();
+    if (!uD) return;
+    
+    uD.pin = pinA;
+    saveCurrentUserProfile(uD);
+    alert('PIN created successfully!');
+    
+    const modalElement = document.getElementById('myModalCreatePinDash');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    if (modal) modal.hide();
+};
+
+const renderNotifications = (transactions) => {
+    const list = document.getElementById('notification-list');
+    const badge = document.getElementById('notification-badge');
+    if (!list) return;
+
+    if (!transactions || transactions.length === 0) {
+        list.innerHTML = '<li class="dropdown-item-custom p-3 text-center text-muted">No recent transactions</li>';
+        if (badge) badge.style.display = 'none';
+        return;
+    }
+
+    if (badge) {
+        badge.style.display = 'inline-block';
+        badge.textContent = transactions.length > 9 ? '9+' : transactions.length;
+    }
+
+    list.innerHTML = transactions.map(t => {
+        const isDep = t.type === 'Deposit';
+        const dateObj = new Date(t.date);
+        const dateStr = dateObj.toLocaleDateString() + ' ' + dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const iconColor = isDep ? '#4caf50' : '#f44336';
+        const iconClass = isDep ? 'bi-arrow-down-left-circle-fill' : 'bi-arrow-up-right-circle-fill';
+        
+        return `
+            <li class="dropdown-item-custom p-2 border-bottom" style="border-color: #f0f0f0;">
+                <div class="d-flex align-items-center gap-3 w-100">
+                    <i class="bi ${iconClass}" style="font-size: 24px; color: ${iconColor};"></i>
+                    <div>
+                        <div style="font-weight: 600; font-size: 14px;">${t.type}</div>
+                        <div style="font-size: 12px; color: #888;">${dateStr}</div>
+                    </div>
+                    <div class="ms-auto" style="font-weight: 700; font-size: 14px; color: ${iconColor};">
+                        ${isDep ? '+' : '-'}₦${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </div>
+                </div>
+            </li>
+        `;
+    }).join('');
+};

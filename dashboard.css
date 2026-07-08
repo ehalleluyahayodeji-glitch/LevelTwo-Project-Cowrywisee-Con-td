@@ -1147,3 +1147,97 @@ body {
         margin-left: 2px !important;
     }
 }
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+body.dark-mode .top-navbar,
+body.dark-mode .sidebar-fixed,
+body.dark-mode .bottom-nav {
+    background: #1e1e1e !important;
+    border-color: #333 !important;
+}
+body.dark-mode .balance-card, 
+body.dark-mode .bg-white,
+body.dark-mode .portfolio-card,
+body.dark-mode .save-scroll-card,
+body.dark-mode .invest-more-card,
+body.dark-mode .cw-modal-card,
+body.dark-mode .cw-portfolio-modal,
+body.dark-mode .modal-content,
+body.dark-mode .dropdown-menu {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #e0e0e0 !important;
+}
+body.dark-mode [style*="background: #E1F6FF"],
+body.dark-mode [style*="background: #F5EDFF"],
+body.dark-mode [style*="background: #ECFBEC"],
+body.dark-mode [style*="background: #FFF6EE"],
+body.dark-mode [style*="background: #FFE6EB"],
+body.dark-mode [style*="background: #BDFF97"],
+body.dark-mode [style*="background: #FCE0C0"],
+body.dark-mode [style*="background: #DAE2F5"],
+body.dark-mode [style*="background: #EFF6FF"],
+body.dark-mode [style*="background: #F3FBFF"],
+body.dark-mode [style*="background: #FBF9FF"],
+body.dark-mode [style*="background: #FFEBF0"] {
+    background-color: #2a2a2a !important;
+}
+body.dark-mode .navbar-center, 
+body.dark-mode .balance-amount, 
+body.dark-mode .section-heading,
+body.dark-mode .portfolio-card-title,
+body.dark-mode .profile-name,
+body.dark-mode .section-big-title,
+body.dark-mode .cw-modal-title,
+body.dark-mode h2, body.dark-mode h3, body.dark-mode h5, body.dark-mode h6,
+body.dark-mode span, body.dark-mode div, body.dark-mode a, body.dark-mode .text-dark {
+    color: inherit;
+}
+body.dark-mode .data-value-plain, 
+body.dark-mode .data-label-primary,
+body.dark-mode .cw-row-label {
+    color: #e0e0e0 !important;
+}
+body.dark-mode .input-group2 input,
+body.dark-mode .cw-pin-box,
+body.dark-mode .c-pin-box,
+body.dark-mode .cw-amount-input {
+    background: #2a2a2a !important;
+    color: #e0e0e0 !important;
+    border-color: #444 !important;
+}
+body.dark-mode .tab-pill-group {
+    background: #2a2a2a !important;
+}
+body.dark-mode .tab-pill.inactive {
+    color: #aaa !important;
+}
+body.dark-mode .nav-item-custom {
+    color: #aaa !important;
+}
+body.dark-mode .nav-item-custom:hover {
+    background: #2a2a2a !important;
+}
+body.dark-mode .nav-item-custom.active {
+    background: #0d2b5e !important;
+    color: #4da3ff !important;
+}
+body.dark-mode .bottom-pill-btn {
+    background: #2a2a2a !important;
+}
+body.dark-mode .save-scroll-row .save-scroll-card {
+    border: 1px solid #333 !important;
+}
+body.dark-mode .save-pill-btn, body.dark-mode .pill-btn-outline {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+    border-color: #444 !important;
+}
+body.dark-mode .circle-plus-btn {
+    background-color: #2a2a2a !important;
+    color: #4da3ff !important;
+}
