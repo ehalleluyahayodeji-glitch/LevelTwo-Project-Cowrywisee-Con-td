@@ -114,8 +114,6 @@ const fetchInfo = () => {
         return;
     }
     
-    // Redirect to welcome onboarding only for brand-new users
-    // (no transactions, default starting balance, and flag not set)
     const isNewUser = uD.welcomeComplete !== true
         && (!uD.transactions || uD.transactions.length === 0)
         && parseFloat(uD.balance || 0) <= 1000;
@@ -530,7 +528,6 @@ const withdrawBtn = () => {
     }
 }
 
-// Transfer Funds Feature
 const transferFunds = () => {
     const tUser = document.getElementById('transferUsername').value.trim();
     const tAmt = parseFloat(document.getElementById('transferAmount').value);
@@ -575,7 +572,6 @@ const transferFunds = () => {
         return;
     }
 
-    // Deduct from Sender
     uD.balance = (currentBal - tAmt).toFixed(2);
     if (!uD.transactions) uD.transactions = [];
     uD.transactions.unshift({
@@ -585,7 +581,6 @@ const transferFunds = () => {
     });
     saveCurrentUserProfile(uD);
 
-    // Add to Receiver
     let targetUser = allUsers[targetUserIndex];
     let targetBal = parseFloat(targetUser.balance || 0);
     targetUser.balance = (targetBal + tAmt).toFixed(2);
@@ -596,7 +591,6 @@ const transferFunds = () => {
         date: new Date().toISOString()
     });
     
-    // Update target user in global details array and their specific email key
     allUsers[targetUserIndex] = targetUser;
     localStorage.setItem('details', JSON.stringify(allUsers));
     
@@ -607,15 +601,12 @@ const transferFunds = () => {
 
     showToast(`Successfully transferred ₦${tAmt} to @${targetUsername}`);
     
-    // Close modal & reload
     const modalEl = document.getElementById('myModalTransfer');
     const modalInstance = bootstrap.Modal.getInstance(modalEl);
     if (modalInstance) modalInstance.hide();
     
     setTimeout(() => location.reload(), 3000);
 }
-
-// Profile Image Upload Feature
 window.addEventListener('DOMContentLoaded', () => {
     fetchInfo();
     
@@ -775,7 +766,6 @@ const saveProfileDetails = () => {
     
     showToast('Profile updated successfully');
     
-    // Close modal
     const modalEl = document.getElementById('myModalEditProfile');
     const modalInstance = bootstrap.Modal.getInstance(modalEl);
     if (modalInstance) modalInstance.hide();
@@ -816,7 +806,6 @@ const resetPinAction = () => {
     document.getElementById('rP3').value = '';
     document.getElementById('rP4').value = '';
     
-    // Close modal
     const modalEl = document.getElementById('myModalResetPin');
     const modalInstance = bootstrap.Modal.getInstance(modalEl);
     if (modalInstance) modalInstance.hide();

@@ -1,4 +1,4 @@
-/* Cowrywise Onboarding Welcome Stylesheet */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -33,7 +33,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Header & Layout */
 header {
     width: 100%;
     padding: 24px 80px;
@@ -79,7 +78,6 @@ main {
     margin: 0 auto;
 }
 
-/* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -91,7 +89,6 @@ main {
     }
 }
 
-/* State 1: Choose Action Screen */
 #screen-selection {
     animation: fadeInUp 0.5s ease-out;
 }
@@ -205,7 +202,6 @@ main {
     color: #5b21b6;
 }
 
-/* Card illustrations */
 .card-illustration {
     position: absolute;
     bottom: 0;
@@ -291,7 +287,6 @@ main {
     line-height: 1.4;
 }
 
-/* State 2 & 3: Funding Screen */
 #screen-funding {
     animation: fadeInUp 0.5s ease-out;
 }
@@ -330,7 +325,6 @@ main {
     margin-bottom: 20px;
 }
 
-/* Naira Input Styling */
 .naira-input-container {
     display: flex;
     align-items: center;
@@ -359,7 +353,7 @@ main {
     padding: 0;
 }
 
-/* Hide arrow spinner in numeric inputs */
+
 .naira-input::-webkit-outer-spin-button,
 .naira-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -369,7 +363,7 @@ main {
     -moz-appearance: textfield;
 }
 
-/* Warnings and Fee Pills */
+
 .validation-warning {
     display: flex;
     align-items: center;
@@ -423,7 +417,6 @@ main {
     text-decoration: underline;
 }
 
-/* Floating overlapping cards stack */
 .cards-stack-container {
     position: relative;
     width: 380px;
@@ -496,7 +489,7 @@ main {
     object-fit: contain;
 }
 
-/* Hover effects for stacked cards */
+
 .cards-stack-container:hover .stacked-card.emergency {
     transform: rotate(-15deg) translate(-15px, -5px);
     z-index: 1;
@@ -512,7 +505,6 @@ main {
     z-index: 2;
 }
 
-/* Footer Section */
 footer {
     width: 100%;
     padding: 30px 0;
@@ -531,7 +523,6 @@ footer {
     text-transform: uppercase;
 }
 
-/* Modal Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -620,7 +611,6 @@ footer {
     margin-bottom: 12px;
 }
 
-/* Accordion bank details container */
 .accordion-container {
     border: 1px solid #e2e8f0;
     border-radius: 12px;
@@ -753,7 +743,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Modal Footer & Progress Bar */
 .modal-footer-cw {
     background-color: #fafafa;
     border-top: 1px solid #f1f5f9;
@@ -788,7 +777,6 @@ footer {
     transition: width 1s linear;
 }
 
-/* Verification State overlay within modal */
 .modal-overlay-state {
     position: absolute;
     top: 0;
@@ -844,7 +832,6 @@ footer {
     line-height: 1.45;
 }
 
-/* Action button inside modal */
 .btn-modal-action {
     width: 100%;
     padding: 12px;
@@ -863,7 +850,6 @@ footer {
     background-color: var(--primary-blue-hover);
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
     header {
         padding: 20px 30px;

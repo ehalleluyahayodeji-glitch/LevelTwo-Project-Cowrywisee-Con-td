@@ -25,10 +25,8 @@ function syncUserSession(user = {}) {
     
     let finalProfile;
     if (existingIndex >= 0) {
-        // User exists! Just load them and DO NOT overwrite their pin, balance, or transactions
         finalProfile = normalizeUser(allUsers[existingIndex]);
     } else {
-        // New user
         finalProfile = normalizeUser(user);
         allUsers.push({
             ...finalProfile,

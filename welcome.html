@@ -5,23 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome | Cowrywise Onboarding</title>
     <link rel="icon" href="IMAGE/imgi_2_a5971d1b1fbb04e757204fbf07553916.png">
-    
-    <!-- External Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- Toastify CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
-
-    <!-- Header navigation -->
     <header>
         <div class="logo">
             <img src="download (2).svg" alt="Cowrywise Logo">
@@ -30,12 +22,8 @@
             <a href="#" class="skip-btn" id="skip-onboarding">Skip for now</a>
         </div>
     </header>
-
-    <!-- Main Content Area -->
     <main>
         <div class="container">
-            
-            <!-- Screen 1: What would you like to do? -->
             <div id="screen-selection">
                 <div class="welcome-layout">
                     <div class="welcome-left">
@@ -43,46 +31,32 @@
                         <h1 class="welcome-title">What would you like to do?</h1>
                         
                         <div class="cards-container">
-                            <!-- Savings Card -->
                             <div class="action-card savings" id="card-savings" onclick="selectOnboardingCard('savings')">
                                 <div class="card-title">Savings</div>
                                 <div class="card-illustration">
                                     <img src="IMAGE/savings-general.svg" alt="Savings safe illustration">
                                 </div>
                             </div>
-                            
-                            <!-- Investments Card -->
                             <div class="action-card investments" id="card-investments" onclick="selectOnboardingCard('investments')">
                                 <div class="card-title">Investments</div>
                                 <div class="card-illustration">
-                                    <!-- Beautiful Inline Basket SVG Illustration -->
                                     <svg viewBox="0 0 160 160" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                        <!-- Handle of the basket -->
                                         <path d="M40 85 C40 30, 120 30, 120 85" fill="none" stroke="#d97706" stroke-width="8" stroke-linecap="round"/>
                                         <path d="M40 85 C40 35, 120 35, 120 85" fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
-                                        
-                                        <!-- Coin fruits in the basket -->
                                         <circle cx="50" cy="80" r="16" fill="#4c1d95"/>
                                         <circle cx="70" cy="72" r="18" fill="#5b21b6"/>
                                         <circle cx="95" cy="74" r="17" fill="#4c1d95"/>
                                         <circle cx="112" cy="82" r="15" fill="#6d28d9"/>
                                         <circle cx="78" cy="88" r="19" fill="#311062"/>
-                                        
-                                        <!-- Golden stars/coins highlights inside purple circles -->
                                         <circle cx="70" cy="72" r="6" fill="#f59e0b"/>
                                         <circle cx="50" cy="80" r="5" fill="#fbbf24"/>
                                         <circle cx="95" cy="74" r="5" fill="#fbbf24"/>
                                         <circle cx="112" cy="82" r="4" fill="#f59e0b"/>
-                                        
-                                        <!-- Main Woven Basket Body -->
                                         <path d="M30 85 L130 85 C122 135, 38 135, 30 85 Z" fill="#d97706" stroke="#b45309" stroke-width="3" stroke-linejoin="round"/>
-                                        <!-- Weave details -->
                                         <path d="M45 85 Q65 110, 55 125" fill="none" stroke="#b45309" stroke-width="2"/>
                                         <path d="M65 85 Q80 110, 80 128" fill="none" stroke="#b45309" stroke-width="2"/>
                                         <path d="M85 85 Q95 110, 100 126" fill="none" stroke="#b45309" stroke-width="2"/>
                                         <path d="M105 85 Q115 105, 118 118" fill="none" stroke="#b45309" stroke-width="2"/>
-                                        
-                                        <!-- Horizontal weave lines -->
                                         <path d="M33 97 Q80 102, 127 97" fill="none" stroke="#b45309" stroke-width="2"/>
                                         <path d="M36 110 Q80 115, 122 110" fill="none" stroke="#b45309" stroke-width="2"/>
                                         <path d="M42 122 Q80 126, 114 122" fill="none" stroke="#b45309" stroke-width="2"/>
@@ -94,8 +68,6 @@
                         <div class="action-btn-container">
                             <button class="btn-primary-cw" id="selection-continue-btn" disabled onclick="goToFundingScreen()">Continue</button>
                         </div>
-                        
-                        <!-- Tip pill -->
                         <div class="info-pill">
                             <div class="info-pill-icon">
                                 <i class="fa-solid fa-cubes-stacked"></i>
@@ -106,31 +78,21 @@
                         </div>
                     </div>
                     <div class="welcome-right">
-                        <!-- Space reserved for right-side visual assets or left blank for balanced margins -->
                     </div>
                 </div>
             </div>
-            
-            <!-- Screen 2 & 3: Start saving by funding your wallet -->
             <div id="screen-funding" style="display: none;">
                 <div class="funding-layout">
                     <div class="funding-left">
                         <h1 class="funding-title" id="funding-header">Start saving by funding your wallet</h1>
-                        
                         <div class="funding-subtitle">How much would you like to start with?</div>
-                        
-                        <!-- Large Naira Input Display -->
                         <div class="naira-input-container">
                             <span class="naira-symbol">₦</span>
                             <input type="text" class="naira-input" id="funding-amount-input" value="100" placeholder="0">
                         </div>
-                        
-                        <!-- Conditional warning indicator (less than ₦1,000) -->
                         <div class="validation-warning" id="min-warning">
                             <i class="fa-solid fa-circle"></i> A minimum of ₦1,000 is required
                         </div>
-                        
-                        <!-- Conditional fee pill (>= ₦1,000) -->
                         <div class="fee-pill" id="processing-fee-pill" style="display: none;">
                             + ₦ 15.00 processing fee
                         </div>
@@ -141,25 +103,19 @@
                     </div>
                     
                     <div class="funding-right">
-                        <!-- Floating Overlapping Cards Stack -->
                         <div class="cards-stack-container">
-                            <!-- Emergency Savings -->
                             <div class="stacked-card emergency">
                                 <div class="stacked-card-title">Emergency<br>savings</div>
                                 <div class="stacked-card-illus">
                                     <img src="IMAGE/savings-emergency.svg" alt="Emergency savings beach ball">
                                 </div>
                             </div>
-                            
-                            <!-- Locked Savings -->
                             <div class="stacked-card locked">
                                 <div class="stacked-card-title">Locked<br>savings</div>
                                 <div class="stacked-card-illus">
                                     <img src="IMAGE/savings-general.svg" alt="Locked savings safe">
                                 </div>
                             </div>
-                            
-                            <!-- Circles -->
                             <div class="stacked-card circles">
                                 <div class="stacked-card-title">Circles</div>
                                 <div class="stacked-card-illus">
@@ -173,26 +129,19 @@
             
         </div>
     </main>
-
-    <!-- Footer SEC Badge -->
     <footer>
         <div class="footer-sec-badge">
             <img src="IMAGE/imgi_1_sec-logo.uViKvy1J.png" alt="SEC Logo" width="16" height="16">
             Licensed by the SEC
         </div>
     </footer>
-
-    <!-- Screen 4: Make a transfer Modal -->
     <div id="payment-modal" class="modal-overlay">
         <div class="modal-cw">
-            
-            <!-- Dynamic State Overlays (Verifying/Success) -->
             <div id="modal-state-verifying" class="modal-overlay-state">
                 <div class="spinner"></div>
                 <div class="verify-title">Confirming transfer...</div>
                 <div class="verify-desc">Please wait while we verify your bank transfer. This should only take a moment.</div>
             </div>
-            
             <div id="modal-state-success" class="modal-overlay-state">
                 <div class="success-icon">
                     <i class="fa-solid fa-circle-check"></i>
@@ -200,23 +149,17 @@
                 <div class="verify-title">Transfer Received!</div>
                 <div class="verify-desc" id="success-description">₦1,000.00 has been successfully added to your savings. Redirecting you to your dashboard…</div>
             </div>
-            
-            <!-- Standard Modal Body -->
             <div class="modal-header-cw">
                 <div>
                     <h3>Make a transfer</h3>
                 </div>
                 <button class="modal-close-btn" onclick="closePaymentModal()">&times;</button>
             </div>
-            
             <div class="modal-body-cw">
                 <div class="modal-subtitle-cw">
                     Transfer to any account below to complete your payment. Do not save for future use.
                 </div>
-                
                 <div class="recommended-label">Recommended</div>
-                
-                <!-- Bank Accordion Box -->
                 <div class="accordion-container">
                     <div class="accordion-header-cw active" onclick="toggleAccordion()">
                         <div class="bank-info-row">
@@ -225,9 +168,7 @@
                         </div>
                         <i class="fa-solid fa-chevron-down accordion-chevron"></i>
                     </div>
-                    
                     <div class="accordion-content-cw" id="accordion-content">
-                        <!-- Amount row -->
                         <div class="detail-row">
                             <span class="detail-label">Amount</span>
                             <div class="detail-value-container">
@@ -237,8 +178,6 @@
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Account number row -->
                         <div class="detail-row">
                             <span class="detail-label">Account number</span>
                             <div class="detail-value-container">
@@ -248,21 +187,16 @@
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Account name row -->
                         <div class="detail-row" style="align-items: flex-start;">
                             <span class="detail-label" style="margin-top: 2px;">Account name</span>
                             <span class="detail-value-name" id="modal-detail-name">Cowrywise/Adeola Olaoluwa Siyanbola</span>
                         </div>
                     </div>
                 </div>
-                
                 <div class="more-options-label">More options</div>
                 
                 <button class="btn-modal-action" onclick="simulatePaymentVerification()">I have made the transfer</button>
             </div>
-            
-            <!-- Modal countdown and progress indicator -->
             <div class="modal-footer-cw">
                 <i class="fa-regular fa-clock"></i>
                 <span id="countdown-timer">Complete transfer in 59:59</span>
@@ -270,12 +204,8 @@
                 <div class="progress-bar-container">
                     <div class="progress-bar-fill" id="timer-progress-fill"></div>
                 </div>
-            </div>
-            
+            </div>  
         </div>
-    </div>
-
-    <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="welcome.js"></script>
 </body>
