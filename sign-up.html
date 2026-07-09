@@ -136,8 +136,10 @@
                     syncUserSession(googleUser);
                 }
 
+                const activeUser = JSON.parse(localStorage.getItem(googleUser.email) || '{}');
+                const isWelcomeComplete = activeUser.welcomeComplete === true;
                 setTimeout(() => {
-                    window.location.href = "dashboard.html";
+                    window.location.href = isWelcomeComplete ? "dashboard.html" : "welcome.html";
                 }, 1500);
             })
             .catch((error) => {

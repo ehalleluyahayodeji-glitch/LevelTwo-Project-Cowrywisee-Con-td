@@ -1222,67 +1222,69 @@
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
+<script src="script.js"></script>
 <script src="dashboard.js"></script>
 
 <script>
     const password = document.getElementById("Cpassword");
     const toggle = document.getElementById("togglePassword");
 
-    toggle.addEventListener("click", function () {
-        const type = password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
+    if (password && toggle) {
+        toggle.addEventListener("click", function () {
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
+    }
 
     const balAmount = document.getElementById("balAmount");
-    const balDecimals = document.getElementById('balDecimals')
+    const balDecimals = document.getElementById('balDecimals');
     const toggle2 = document.getElementById("toggleBalance");
 
     let isHidden = false;
 
-    toggle2.addEventListener("click", function () {
+    if (toggle2 && balAmount && balDecimals) {
+        toggle2.addEventListener("click", function () {
+            if (isHidden) {
+                balAmount.textContent = balAmount.dataset.balance;
+                balDecimals.textContent = balDecimals.dataset.decimal;
+            } else {
+                balAmount.dataset.balance = balAmount.textContent;
+                balAmount.textContent = "******";
+                balDecimals.dataset.decimal = balDecimals.textContent;
+                balDecimals.textContent = "**";
+            }
 
-        if (isHidden) {
-            balAmount.textContent = balAmount.dataset.balance;
-            balDecimals.textContent = balDecimals.dataset.decimal;
-        } else {
-            balAmount.dataset.balance = balAmount.textContent;
-            balAmount.textContent = "******";
-            balDecimals.dataset.decimal = balDecimals.textContent;
-            balDecimals.textContent = "**";
-        }
-
-        isHidden = !isHidden;
-
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
+            isHidden = !isHidden;
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
+    }
 
     const balAmount2 = document.getElementById("balAmount2");
-    const balDecimals2 = document.getElementById('balDecimals2')
+    const balDecimals2 = document.getElementById('balDecimals2');
     const toggle3 = document.getElementById("toggleBalance2");
 
     let isHidden2 = false;
 
-    toggle3.addEventListener("click", function () {
+    if (toggle3 && balAmount2 && balDecimals2) {
+        toggle3.addEventListener("click", function () {
+            if (isHidden2) {
+                balAmount2.textContent = balAmount2.dataset.balance;
+                balDecimals2.textContent = balDecimals2.dataset.decimal;
+            } else {
+                balAmount2.dataset.balance = balAmount2.textContent;
+                balAmount2.textContent = "******";
+                balDecimals2.dataset.decimal = balDecimals2.textContent;
+                balDecimals2.textContent = "**";
+            }
 
-        if (isHidden2) {
-            balAmount2.textContent = balAmount2.dataset.balance;
-            balDecimals2.textContent = balDecimals2.dataset.decimal;
-        } else {
-            balAmount2.dataset.balance = balAmount2.textContent;
-            balAmount2.textContent = "******";
-            balDecimals2.dataset.decimal = balDecimals2.textContent;
-            balDecimals2.textContent = "**";
-        }
-
-        isHidden2 = !isHidden2;
-
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
-
+            isHidden2 = !isHidden2;
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
+    }
 </script>
 
 </html>

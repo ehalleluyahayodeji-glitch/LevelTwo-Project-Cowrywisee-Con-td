@@ -136,8 +136,10 @@ function loginUser (){
 }
 }).showToast();
 
+    const activeUser = JSON.parse(localStorage.getItem(matchedUser.user_email || matchedUser.email) || '{}');
+    const isWelcomeComplete = activeUser.welcomeComplete === true;
     setTimeout(() => {
-        window.location.href = 'dashboard.html'
+        window.location.href = isWelcomeComplete ? 'dashboard.html' : 'welcome.html';
     }, 1500);
     }else{
         Toastify({

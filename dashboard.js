@@ -114,6 +114,16 @@ const fetchInfo = () => {
         return;
     }
     
+    // Redirect to welcome onboarding only for brand-new users
+    // (no transactions, default starting balance, and flag not set)
+    const isNewUser = uD.welcomeComplete !== true
+        && (!uD.transactions || uD.transactions.length === 0)
+        && parseFloat(uD.balance || 0) <= 1000;
+    if (isNewUser) {
+        window.location.href = 'welcome.html';
+        return;
+    }
+    
 
     const wName = document.getElementById('welcomeName');
     const balA = document.getElementById('balAmount');
